@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gestor de Cintas", "Gestor de Etiquetas\Gestor de Cintas.csproj", "{535738D1-CFE2-425A-BD78-06EB4A800596}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{535738D1-CFE2-425A-BD78-06EB4A800596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535738D1-CFE2-425A-BD78-06EB4A800596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535738D1-CFE2-425A-BD78-06EB4A800596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535738D1-CFE2-425A-BD78-06EB4A800596}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8601958C-A13C-4F1C-A7F0-120058E37217}
+	EndGlobalSection
+EndGlobal
