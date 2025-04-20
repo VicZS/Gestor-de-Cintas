@@ -21,6 +21,19 @@ namespace Gestor_de_Etiquetas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if(string.IsNullOrWhiteSpace(codigoEscaneado.Text))
+                {
+                    MessageBox.Show("Por favor, escanee un código.");
+                    return;
+                }
+
+                if (codigoEscaneado.Text.Length < 8)
+                {
+                    MessageBox.Show("El código escaneado no cuenta con los caracteres suficientes");
+                    return;
+                }
+
+
                 MessageBox.Show("El código escaneado es: " + codigoEscaneado.Text);
                 e.Handled = true;
                 e.SuppressKeyPress = true;
