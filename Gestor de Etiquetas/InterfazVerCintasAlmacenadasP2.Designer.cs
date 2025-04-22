@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             btnAgregarCinta = new Button();
-            nombreCintaAgregar = new TextBox();
-            contenedorAgregarCinta = new ComboBox();
+            TBAgregarCinta = new TextBox();
+            CBListaContenedores = new ComboBox();
             btnCrearContenedor = new Button();
-            nombreContenedorCrear = new TextBox();
-            fechaCrearContenedor = new DateTimePicker();
+            TBCrearContenedor = new TextBox();
+            DTPCrearContenedor = new DateTimePicker();
             btnEliminarContenedorSeleccionado = new Button();
             contenedorDeListaCintasEditable = new ComboBox();
             listaCintasEliminar = new CheckedListBox();
@@ -58,21 +58,22 @@
             btnAgregarCinta.TabIndex = 45;
             btnAgregarCinta.Text = "Agregar Cinta";
             btnAgregarCinta.UseVisualStyleBackColor = true;
+            btnAgregarCinta.Click += btnAgregarCinta_Click;
             // 
-            // nombreCintaAgregar
+            // TBAgregarCinta
             // 
-            nombreCintaAgregar.Location = new Point(26, 561);
-            nombreCintaAgregar.Name = "nombreCintaAgregar";
-            nombreCintaAgregar.Size = new Size(299, 30);
-            nombreCintaAgregar.TabIndex = 44;
+            TBAgregarCinta.Location = new Point(26, 561);
+            TBAgregarCinta.Name = "TBAgregarCinta";
+            TBAgregarCinta.Size = new Size(299, 30);
+            TBAgregarCinta.TabIndex = 44;
             // 
-            // contenedorAgregarCinta
+            // CBListaContenedores
             // 
-            contenedorAgregarCinta.FormattingEnabled = true;
-            contenedorAgregarCinta.Location = new Point(25, 482);
-            contenedorAgregarCinta.Name = "contenedorAgregarCinta";
-            contenedorAgregarCinta.Size = new Size(300, 31);
-            contenedorAgregarCinta.TabIndex = 43;
+            CBListaContenedores.FormattingEnabled = true;
+            CBListaContenedores.Location = new Point(25, 482);
+            CBListaContenedores.Name = "CBListaContenedores";
+            CBListaContenedores.Size = new Size(300, 31);
+            CBListaContenedores.TabIndex = 43;
             // 
             // btnCrearContenedor
             // 
@@ -82,20 +83,21 @@
             btnCrearContenedor.TabIndex = 42;
             btnCrearContenedor.Text = "Crear Contenedor";
             btnCrearContenedor.UseVisualStyleBackColor = true;
+            btnCrearContenedor.Click += btnCrearContenedor_Click;
             // 
-            // nombreContenedorCrear
+            // TBCrearContenedor
             // 
-            nombreContenedorCrear.Location = new Point(26, 243);
-            nombreContenedorCrear.Name = "nombreContenedorCrear";
-            nombreContenedorCrear.Size = new Size(300, 30);
-            nombreContenedorCrear.TabIndex = 41;
+            TBCrearContenedor.Location = new Point(26, 243);
+            TBCrearContenedor.Name = "TBCrearContenedor";
+            TBCrearContenedor.Size = new Size(300, 30);
+            TBCrearContenedor.TabIndex = 41;
             // 
-            // fechaCrearContenedor
+            // DTPCrearContenedor
             // 
-            fechaCrearContenedor.Location = new Point(26, 158);
-            fechaCrearContenedor.Name = "fechaCrearContenedor";
-            fechaCrearContenedor.Size = new Size(300, 30);
-            fechaCrearContenedor.TabIndex = 40;
+            DTPCrearContenedor.Location = new Point(26, 158);
+            DTPCrearContenedor.Name = "DTPCrearContenedor";
+            DTPCrearContenedor.Size = new Size(300, 30);
+            DTPCrearContenedor.TabIndex = 40;
             // 
             // btnEliminarContenedorSeleccionado
             // 
@@ -221,11 +223,12 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(25, 456);
+            label9.Location = new Point(29, 456);
             label9.Name = "label9";
             label9.Size = new Size(74, 23);
             label9.TabIndex = 55;
             label9.Text = "Opcional";
+            label9.Click += label9_Click;
             // 
             // InterfazVerCintasAlmacenadasP2
             // 
@@ -244,11 +247,11 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnAgregarCinta);
-            Controls.Add(nombreCintaAgregar);
-            Controls.Add(contenedorAgregarCinta);
+            Controls.Add(TBAgregarCinta);
+            Controls.Add(CBListaContenedores);
             Controls.Add(btnCrearContenedor);
-            Controls.Add(nombreContenedorCrear);
-            Controls.Add(fechaCrearContenedor);
+            Controls.Add(TBCrearContenedor);
+            Controls.Add(DTPCrearContenedor);
             Controls.Add(btnEliminarContenedorSeleccionado);
             Controls.Add(contenedorDeListaCintasEditable);
             Controls.Add(listaCintasEliminar);
@@ -264,11 +267,11 @@
 
         #endregion
         private Button btnAgregarCinta;
-        private TextBox nombreCintaAgregar;
-        private ComboBox contenedorAgregarCinta;
+        private TextBox TBAgregarCinta;
+        private ComboBox CBListaContenedores;
         private Button btnCrearContenedor;
-        private TextBox nombreContenedorCrear;
-        private DateTimePicker fechaCrearContenedor;
+        private TextBox TBCrearContenedor;
+        private DateTimePicker DTPCrearContenedor;
         private Button btnEliminarContenedorSeleccionado;
         private ComboBox contenedorDeListaCintasEditable;
         private CheckedListBox listaCintasEliminar;

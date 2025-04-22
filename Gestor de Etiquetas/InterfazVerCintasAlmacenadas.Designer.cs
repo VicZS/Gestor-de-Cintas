@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             monthCalendar1 = new MonthCalendar();
-            btnGenerarExcelAlmacenRango = new Button();
-            fechaRangoFin = new DateTimePicker();
-            fechaRangoInicio = new DateTimePicker();
-            fechaUnica = new DateTimePicker();
-            btnGenerarExcelAlmacenDia = new Button();
-            cintaQueBuscar = new TextBox();
+            btnGenerarExcelEntreDias = new Button();
+            DTPGenerarExelDiaFin = new DateTimePicker();
+            DTPGenerarExelDiaInicio = new DateTimePicker();
+            DTPGenerarExelDia = new DateTimePicker();
+            btnGenerarExcelDia = new Button();
+            TBCintaABuscar = new TextBox();
             btnBuscarCinta = new Button();
             label1 = new Label();
             panel1 = new Panel();
@@ -69,51 +69,53 @@
             monthCalendar1.ShowWeekNumbers = true;
             monthCalendar1.TabIndex = 0;
             // 
-            // btnGenerarExcelAlmacenRango
+            // btnGenerarExcelEntreDias
             // 
-            btnGenerarExcelAlmacenRango.Location = new Point(777, 631);
-            btnGenerarExcelAlmacenRango.Name = "btnGenerarExcelAlmacenRango";
-            btnGenerarExcelAlmacenRango.Size = new Size(96, 35);
-            btnGenerarExcelAlmacenRango.TabIndex = 4;
-            btnGenerarExcelAlmacenRango.Text = "Guardar";
-            btnGenerarExcelAlmacenRango.UseVisualStyleBackColor = true;
+            btnGenerarExcelEntreDias.Location = new Point(777, 631);
+            btnGenerarExcelEntreDias.Name = "btnGenerarExcelEntreDias";
+            btnGenerarExcelEntreDias.Size = new Size(96, 35);
+            btnGenerarExcelEntreDias.TabIndex = 4;
+            btnGenerarExcelEntreDias.Text = "Guardar";
+            btnGenerarExcelEntreDias.UseVisualStyleBackColor = true;
+            btnGenerarExcelEntreDias.Click += btnGenerarExcelEntreDias_Click;
             // 
-            // fechaRangoFin
+            // DTPGenerarExelDiaFin
             // 
-            fechaRangoFin.Location = new Point(663, 595);
-            fechaRangoFin.Name = "fechaRangoFin";
-            fechaRangoFin.Size = new Size(301, 30);
-            fechaRangoFin.TabIndex = 5;
+            DTPGenerarExelDiaFin.Location = new Point(663, 595);
+            DTPGenerarExelDiaFin.Name = "DTPGenerarExelDiaFin";
+            DTPGenerarExelDiaFin.Size = new Size(301, 30);
+            DTPGenerarExelDiaFin.TabIndex = 5;
             // 
-            // fechaRangoInicio
+            // DTPGenerarExelDiaInicio
             // 
-            fechaRangoInicio.Location = new Point(663, 537);
-            fechaRangoInicio.Name = "fechaRangoInicio";
-            fechaRangoInicio.Size = new Size(301, 30);
-            fechaRangoInicio.TabIndex = 6;
+            DTPGenerarExelDiaInicio.Location = new Point(663, 537);
+            DTPGenerarExelDiaInicio.Name = "DTPGenerarExelDiaInicio";
+            DTPGenerarExelDiaInicio.Size = new Size(301, 30);
+            DTPGenerarExelDiaInicio.TabIndex = 6;
             // 
-            // fechaUnica
+            // DTPGenerarExelDia
             // 
-            fechaUnica.Location = new Point(328, 595);
-            fechaUnica.Name = "fechaUnica";
-            fechaUnica.Size = new Size(297, 30);
-            fechaUnica.TabIndex = 7;
+            DTPGenerarExelDia.Location = new Point(328, 595);
+            DTPGenerarExelDia.Name = "DTPGenerarExelDia";
+            DTPGenerarExelDia.Size = new Size(297, 30);
+            DTPGenerarExelDia.TabIndex = 7;
             // 
-            // btnGenerarExcelAlmacenDia
+            // btnGenerarExcelDia
             // 
-            btnGenerarExcelAlmacenDia.Location = new Point(424, 631);
-            btnGenerarExcelAlmacenDia.Name = "btnGenerarExcelAlmacenDia";
-            btnGenerarExcelAlmacenDia.Size = new Size(96, 35);
-            btnGenerarExcelAlmacenDia.TabIndex = 8;
-            btnGenerarExcelAlmacenDia.Text = "Guardar";
-            btnGenerarExcelAlmacenDia.UseVisualStyleBackColor = true;
+            btnGenerarExcelDia.Location = new Point(424, 631);
+            btnGenerarExcelDia.Name = "btnGenerarExcelDia";
+            btnGenerarExcelDia.Size = new Size(96, 35);
+            btnGenerarExcelDia.TabIndex = 8;
+            btnGenerarExcelDia.Text = "Guardar";
+            btnGenerarExcelDia.UseVisualStyleBackColor = true;
+            btnGenerarExcelDia.Click += btnGenerarExcelDia_Click;
             // 
-            // cintaQueBuscar
+            // TBCintaABuscar
             // 
-            cintaQueBuscar.Location = new Point(462, 27);
-            cintaQueBuscar.Name = "cintaQueBuscar";
-            cintaQueBuscar.Size = new Size(233, 30);
-            cintaQueBuscar.TabIndex = 9;
+            TBCintaABuscar.Location = new Point(462, 27);
+            TBCintaABuscar.Name = "TBCintaABuscar";
+            TBCintaABuscar.Size = new Size(233, 30);
+            TBCintaABuscar.TabIndex = 9;
             // 
             // btnBuscarCinta
             // 
@@ -123,6 +125,7 @@
             btnBuscarCinta.TabIndex = 10;
             btnBuscarCinta.Text = "Buscar";
             btnBuscarCinta.UseVisualStyleBackColor = true;
+            btnBuscarCinta.Click += btnBuscarCinta_Click;
             // 
             // label1
             // 
@@ -355,12 +358,12 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(btnBuscarCinta);
-            Controls.Add(cintaQueBuscar);
-            Controls.Add(btnGenerarExcelAlmacenDia);
-            Controls.Add(fechaUnica);
-            Controls.Add(fechaRangoInicio);
-            Controls.Add(fechaRangoFin);
-            Controls.Add(btnGenerarExcelAlmacenRango);
+            Controls.Add(TBCintaABuscar);
+            Controls.Add(btnGenerarExcelDia);
+            Controls.Add(DTPGenerarExelDia);
+            Controls.Add(DTPGenerarExelDiaInicio);
+            Controls.Add(DTPGenerarExelDiaFin);
+            Controls.Add(btnGenerarExcelEntreDias);
             Controls.Add(monthCalendar1);
             Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -373,12 +376,12 @@
         #endregion
 
         private MonthCalendar monthCalendar1;
-        private Button btnGenerarExcelAlmacenRango;
-        private DateTimePicker fechaRangoFin;
-        private DateTimePicker fechaRangoInicio;
-        private DateTimePicker fechaUnica;
-        private Button btnGenerarExcelAlmacenDia;
-        private TextBox cintaQueBuscar;
+        private Button btnGenerarExcelEntreDias;
+        private DateTimePicker DTPGenerarExelDiaFin;
+        private DateTimePicker DTPGenerarExelDiaInicio;
+        private DateTimePicker DTPGenerarExelDia;
+        private Button btnGenerarExcelDia;
+        private TextBox TBCintaABuscar;
         private Button btnBuscarCinta;
         private Label label1;
         private Panel panel1;
