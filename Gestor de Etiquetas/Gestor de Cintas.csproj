@@ -8,6 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Multimedia\logo.ico</ApplicationIcon>
+    <AssemblyName>Administrador de Cintas</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

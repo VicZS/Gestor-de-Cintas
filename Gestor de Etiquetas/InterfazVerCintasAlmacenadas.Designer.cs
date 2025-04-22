@@ -43,34 +43,28 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            btnEliminarCintaSeleccionada = new Button();
-            listaCintasEditable = new CheckedListBox();
             panel3 = new Panel();
-            contenedorDeListaCintasEditable = new ComboBox();
-            btnEliminarContenedorSeleccionado = new Button();
             fechaMostrarContenedores = new DateTimePicker();
             label6 = new Label();
             listaMostrarContenedoresDia = new ListView();
             panel4 = new Panel();
-            label7 = new Label();
-            panel5 = new Panel();
-            fechaCrearContenedor = new DateTimePicker();
-            nombreContenedorCrear = new TextBox();
-            btnCrearContenedor = new Button();
-            contenedorAgregarCinta = new ComboBox();
-            nombreCintaAgregar = new TextBox();
-            btnAgregarCinta = new Button();
             panel6 = new Panel();
             label8 = new Label();
-            label9 = new Label();
             listaContenedoresCintasReutilizables = new ListView();
             btnInfoContenedoresReutilizables = new Button();
+            listaMostrarCintas = new ListView();
+            label7 = new Label();
+            contenedorMostrarCintas = new ComboBox();
+            label9 = new Label();
+            panel5 = new Panel();
+            label10 = new Label();
+            listaCintasUso = new ListView();
             SuspendLayout();
             // 
             // monthCalendar1
             // 
-            monthCalendar1.CalendarDimensions = new Size(1, 2);
-            monthCalendar1.Location = new Point(11, 18);
+            monthCalendar1.CalendarDimensions = new Size(1, 4);
+            monthCalendar1.Location = new Point(11, 28);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.ShowWeekNumbers = true;
             monthCalendar1.TabIndex = 0;
@@ -193,23 +187,6 @@
             label5.TabIndex = 17;
             label5.Text = "Generar Excel";
             // 
-            // btnEliminarCintaSeleccionada
-            // 
-            btnEliminarCintaSeleccionada.Location = new Point(793, 465);
-            btnEliminarCintaSeleccionada.Name = "btnEliminarCintaSeleccionada";
-            btnEliminarCintaSeleccionada.Size = new Size(169, 30);
-            btnEliminarCintaSeleccionada.TabIndex = 21;
-            btnEliminarCintaSeleccionada.Text = "Eliminar Cinta";
-            btnEliminarCintaSeleccionada.UseVisualStyleBackColor = true;
-            // 
-            // listaCintasEditable
-            // 
-            listaCintasEditable.FormattingEnabled = true;
-            listaCintasEditable.Location = new Point(708, 307);
-            listaCintasEditable.Name = "listaCintasEditable";
-            listaCintasEditable.Size = new Size(256, 154);
-            listaCintasEditable.TabIndex = 22;
-            // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(14, 63, 96);
@@ -218,26 +195,9 @@
             panel3.Size = new Size(679, 9);
             panel3.TabIndex = 14;
             // 
-            // contenedorDeListaCintasEditable
-            // 
-            contenedorDeListaCintasEditable.FormattingEnabled = true;
-            contenedorDeListaCintasEditable.Location = new Point(708, 234);
-            contenedorDeListaCintasEditable.Name = "contenedorDeListaCintasEditable";
-            contenedorDeListaCintasEditable.Size = new Size(256, 31);
-            contenedorDeListaCintasEditable.TabIndex = 23;
-            // 
-            // btnEliminarContenedorSeleccionado
-            // 
-            btnEliminarContenedorSeleccionado.Location = new Point(795, 271);
-            btnEliminarContenedorSeleccionado.Name = "btnEliminarContenedorSeleccionado";
-            btnEliminarContenedorSeleccionado.Size = new Size(169, 30);
-            btnEliminarContenedorSeleccionado.TabIndex = 24;
-            btnEliminarContenedorSeleccionado.Text = "Eliminar Contenedor";
-            btnEliminarContenedorSeleccionado.UseVisualStyleBackColor = true;
-            // 
             // fechaMostrarContenedores
             // 
-            fechaMostrarContenedores.Location = new Point(306, 131);
+            fechaMostrarContenedores.Location = new Point(306, 140);
             fechaMostrarContenedores.Name = "fechaMostrarContenedores";
             fechaMostrarContenedores.Size = new Size(305, 30);
             fechaMostrarContenedores.TabIndex = 25;
@@ -256,127 +216,114 @@
             // 
             listaMostrarContenedoresDia.Location = new Point(617, 78);
             listaMostrarContenedoresDia.Name = "listaMostrarContenedoresDia";
-            listaMostrarContenedoresDia.Size = new Size(316, 83);
+            listaMostrarContenedoresDia.Size = new Size(316, 95);
             listaMostrarContenedoresDia.TabIndex = 27;
             listaMostrarContenedoresDia.UseCompatibleStateImageBehavior = false;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(14, 63, 96);
-            panel4.Location = new Point(299, 173);
+            panel4.Location = new Point(299, 179);
             panel4.Name = "panel4";
             panel4.Size = new Size(679, 9);
             panel4.TabIndex = 15;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(306, 185);
-            label7.Name = "label7";
-            label7.Size = new Size(264, 26);
-            label7.TabIndex = 28;
-            label7.Text = "Editar Contenedores y Cintas";
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(14, 63, 96);
-            panel5.Location = new Point(663, 227);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(10, 279);
-            panel5.TabIndex = 13;
-            // 
-            // fechaCrearContenedor
-            // 
-            fechaCrearContenedor.Location = new Point(306, 235);
-            fechaCrearContenedor.Name = "fechaCrearContenedor";
-            fechaCrearContenedor.Size = new Size(300, 30);
-            fechaCrearContenedor.TabIndex = 29;
-            // 
-            // nombreContenedorCrear
-            // 
-            nombreContenedorCrear.Location = new Point(306, 271);
-            nombreContenedorCrear.Name = "nombreContenedorCrear";
-            nombreContenedorCrear.Size = new Size(300, 30);
-            nombreContenedorCrear.TabIndex = 30;
-            // 
-            // btnCrearContenedor
-            // 
-            btnCrearContenedor.Location = new Point(306, 305);
-            btnCrearContenedor.Name = "btnCrearContenedor";
-            btnCrearContenedor.Size = new Size(155, 37);
-            btnCrearContenedor.TabIndex = 31;
-            btnCrearContenedor.Text = "Crear Contenedor";
-            btnCrearContenedor.UseVisualStyleBackColor = true;
-            // 
-            // contenedorAgregarCinta
-            // 
-            contenedorAgregarCinta.FormattingEnabled = true;
-            contenedorAgregarCinta.Location = new Point(306, 358);
-            contenedorAgregarCinta.Name = "contenedorAgregarCinta";
-            contenedorAgregarCinta.Size = new Size(300, 31);
-            contenedorAgregarCinta.TabIndex = 32;
-            // 
-            // nombreCintaAgregar
-            // 
-            nombreCintaAgregar.Location = new Point(306, 395);
-            nombreCintaAgregar.Name = "nombreCintaAgregar";
-            nombreCintaAgregar.Size = new Size(299, 30);
-            nombreCintaAgregar.TabIndex = 33;
-            // 
-            // btnAgregarCinta
-            // 
-            btnAgregarCinta.Location = new Point(307, 431);
-            btnAgregarCinta.Name = "btnAgregarCinta";
-            btnAgregarCinta.Size = new Size(154, 34);
-            btnAgregarCinta.TabIndex = 34;
-            btnAgregarCinta.Text = "Agregar Cinta";
-            btnAgregarCinta.UseVisualStyleBackColor = true;
-            // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(14, 63, 96);
-            panel6.Location = new Point(-1, 331);
+            panel6.Location = new Point(299, 336);
             panel6.Name = "panel6";
-            panel6.Size = new Size(297, 11);
+            panel6.Size = new Size(679, 11);
             panel6.TabIndex = 16;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(22, 358);
+            label8.Location = new Point(711, 350);
             label8.Name = "label8";
-            label8.Size = new Size(224, 26);
+            label8.Size = new Size(230, 26);
             label8.TabIndex = 35;
-            label8.Text = "Contenedores con Cintas";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(70, 384);
-            label9.Name = "label9";
-            label9.Size = new Size(140, 26);
-            label9.TabIndex = 36;
-            label9.Text = "para Reutilizar";
+            label8.Text = "Contenedores con Cintas ";
             // 
             // listaContenedoresCintasReutilizables
             // 
-            listaContenedoresCintasReutilizables.Location = new Point(12, 448);
+            listaContenedoresCintasReutilizables.Location = new Point(716, 418);
             listaContenedoresCintasReutilizables.Name = "listaContenedoresCintasReutilizables";
-            listaContenedoresCintasReutilizables.Size = new Size(258, 218);
+            listaContenedoresCintasReutilizables.Size = new Size(218, 73);
             listaContenedoresCintasReutilizables.TabIndex = 37;
             listaContenedoresCintasReutilizables.UseCompatibleStateImageBehavior = false;
             // 
             // btnInfoContenedoresReutilizables
             // 
-            btnInfoContenedoresReutilizables.Location = new Point(261, 373);
+            btnInfoContenedoresReutilizables.Location = new Point(949, 400);
             btnInfoContenedoresReutilizables.Name = "btnInfoContenedoresReutilizables";
             btnInfoContenedoresReutilizables.Size = new Size(26, 37);
             btnInfoContenedoresReutilizables.TabIndex = 38;
             btnInfoContenedoresReutilizables.Text = "?";
             btnInfoContenedoresReutilizables.UseVisualStyleBackColor = true;
+            // 
+            // listaMostrarCintas
+            // 
+            listaMostrarCintas.Location = new Point(617, 220);
+            listaMostrarCintas.Name = "listaMostrarCintas";
+            listaMostrarCintas.Size = new Size(316, 110);
+            listaMostrarCintas.TabIndex = 39;
+            listaMostrarCintas.UseCompatibleStateImageBehavior = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(307, 204);
+            label7.Name = "label7";
+            label7.Size = new Size(279, 26);
+            label7.TabIndex = 40;
+            label7.Text = "Mostrar Cintas del Contenedor";
+            // 
+            // contenedorMostrarCintas
+            // 
+            contenedorMostrarCintas.FormattingEnabled = true;
+            contenedorMostrarCintas.Location = new Point(307, 299);
+            contenedorMostrarCintas.Name = "contenedorMostrarCintas";
+            contenedorMostrarCintas.Size = new Size(295, 31);
+            contenedorMostrarCintas.TabIndex = 41;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(764, 376);
+            label9.Name = "label9";
+            label9.Size = new Size(140, 26);
+            label9.TabIndex = 42;
+            label9.Text = "para Reutilizar";
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(14, 63, 96);
+            panel5.Location = new Point(661, 338);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(10, 162);
+            panel5.TabIndex = 13;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(326, 359);
+            label10.Name = "label10";
+            label10.Size = new Size(255, 26);
+            label10.TabIndex = 43;
+            label10.Text = "Cintas en Caja Fuerte / Uso";
+            // 
+            // listaCintasUso
+            // 
+            listaCintasUso.Location = new Point(328, 388);
+            listaCintasUso.Name = "listaCintasUso";
+            listaCintasUso.Size = new Size(283, 97);
+            listaCintasUso.TabIndex = 44;
+            listaCintasUso.UseCompatibleStateImageBehavior = false;
             // 
             // InterfazVerCintasAlmacenadas
             // 
@@ -384,28 +331,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 182, 196);
             ClientSize = new Size(976, 678);
+            Controls.Add(listaCintasUso);
+            Controls.Add(label10);
+            Controls.Add(panel5);
+            Controls.Add(label9);
+            Controls.Add(contenedorMostrarCintas);
+            Controls.Add(label7);
+            Controls.Add(listaMostrarCintas);
+            Controls.Add(panel6);
             Controls.Add(btnInfoContenedoresReutilizables);
             Controls.Add(listaContenedoresCintasReutilizables);
-            Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(panel6);
-            Controls.Add(btnAgregarCinta);
-            Controls.Add(nombreCintaAgregar);
-            Controls.Add(contenedorAgregarCinta);
-            Controls.Add(btnCrearContenedor);
-            Controls.Add(nombreContenedorCrear);
-            Controls.Add(fechaCrearContenedor);
-            Controls.Add(panel5);
-            Controls.Add(label7);
             Controls.Add(panel4);
             Controls.Add(listaMostrarContenedoresDia);
             Controls.Add(label6);
             Controls.Add(fechaMostrarContenedores);
-            Controls.Add(btnEliminarContenedorSeleccionado);
-            Controls.Add(contenedorDeListaCintasEditable);
             Controls.Add(panel3);
-            Controls.Add(listaCintasEditable);
-            Controls.Add(btnEliminarCintaSeleccionada);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -446,27 +387,21 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Button btnEliminarCintaSeleccionada;
-        private CheckedListBox listaCintasEditable;
         private Panel panel3;
-        private ComboBox contenedorDeListaCintasEditable;
-        private Button btnEliminarContenedorSeleccionado;
         private Panel panel4;
         private DateTimePicker fechaMostrarContenedores;
         private Label label6;
         private ListView listaMostrarContenedoresDia;
-        private Label label7;
-        private Panel panel5;
-        private DateTimePicker fechaCrearContenedor;
-        private TextBox nombreContenedorCrear;
-        private Button btnCrearContenedor;
-        private ComboBox contenedorAgregarCinta;
-        private TextBox nombreCintaAgregar;
-        private Button btnAgregarCinta;
         private Panel panel6;
         private Label label8;
-        private Label label9;
         private ListView listaContenedoresCintasReutilizables;
         private Button btnInfoContenedoresReutilizables;
+        private ListView listaMostrarCintas;
+        private Label label7;
+        private ComboBox contenedorMostrarCintas;
+        private Label label9;
+        private Panel panel5;
+        private Label label10;
+        private ListView listaCintasUso;
     }
 }

@@ -47,8 +47,15 @@ namespace Gestor_de_Etiquetas
 
         private void imprimir(string contenidoEtiqueta)
         {
-            string printerName = "Zebra ZD620-203dpi ZPL"; // Cambia esto por el nombre de tu impresora
-            string zpl = $"^XA^LL152^PW457^FO20,30^A0N,50,50^FD{contenidoEtiqueta}^FS^PQ3^XZ";
+            string printerName = "ZDesigner ZT411-203dpi ZPL"; // Cambia esto por el nombre de tu impresora
+            string zpl = $@"
+        ^XA
+        ^LL152
+        ^PW609
+        ^FO80,15^B3N,N,70,N^FD{contenidoEtiqueta}^FS
+        ^FO250,90^A0N,30,40^FD{contenidoEtiqueta}^FS
+        ^PQ2
+        ^XZ";
 
             // ^XA: Inicia el comando ZPL.
             // ^LL152: Define la longitud de la etiqueta en puntos (152 puntos).
@@ -61,7 +68,7 @@ namespace Gestor_de_Etiquetas
             // ^XZ: Finaliza el comando ZPL.
 
 
-            MessageBox.Show(zpl);
+            //MessageBox.Show(zpl);
 
             bool success = ZebraPrinter.SendZplToPrinter(printerName, zpl);
             if (success)
@@ -72,6 +79,11 @@ namespace Gestor_de_Etiquetas
             {
                 MessageBox.Show("Error al Enviar la Etiqueta a la Impresora.");
             }
+        }
+
+        private void btnImprimirEtiquetaSiguiente_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -31,8 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             label1 = new Label();
             BarraMenu = new Panel();
-            panel2 = new Panel();
+            panel4 = new Panel();
             panel3 = new Panel();
+            btnEditarCintasAlmacenadas = new Button();
+            panel2 = new Panel();
             btnVerCintasAlmacenadas = new Button();
             panel1 = new Panel();
             btnImprimirEtiquetas = new Button();
@@ -60,8 +62,10 @@
             // BarraMenu
             // 
             BarraMenu.BackColor = Color.FromArgb(77, 105, 129);
-            BarraMenu.Controls.Add(panel2);
+            BarraMenu.Controls.Add(panel4);
             BarraMenu.Controls.Add(panel3);
+            BarraMenu.Controls.Add(btnEditarCintasAlmacenadas);
+            BarraMenu.Controls.Add(panel2);
             BarraMenu.Controls.Add(btnVerCintasAlmacenadas);
             BarraMenu.Controls.Add(panel1);
             BarraMenu.Controls.Add(btnImprimirEtiquetas);
@@ -74,13 +78,13 @@
             BarraMenu.Size = new Size(288, 678);
             BarraMenu.TabIndex = 9;
             // 
-            // panel2
+            // panel4
             // 
-            panel2.BackColor = Color.FromArgb(14, 63, 96);
-            panel2.Location = new Point(0, 92);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(291, 10);
-            panel2.TabIndex = 10;
+            panel4.BackColor = Color.FromArgb(14, 63, 96);
+            panel4.Location = new Point(134, 93);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(12, 195);
+            panel4.TabIndex = 10;
             // 
             // panel3
             // 
@@ -90,6 +94,30 @@
             panel3.Size = new Size(291, 10);
             panel3.TabIndex = 11;
             // 
+            // btnEditarCintasAlmacenadas
+            // 
+            btnEditarCintasAlmacenadas.FlatAppearance.BorderSize = 0;
+            btnEditarCintasAlmacenadas.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
+            btnEditarCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
+            btnEditarCintasAlmacenadas.ForeColor = SystemColors.Control;
+            btnEditarCintasAlmacenadas.Image = Properties.Resources.almacen;
+            btnEditarCintasAlmacenadas.Location = new Point(135, 101);
+            btnEditarCintasAlmacenadas.Name = "btnEditarCintasAlmacenadas";
+            btnEditarCintasAlmacenadas.Size = new Size(152, 191);
+            btnEditarCintasAlmacenadas.TabIndex = 0;
+            btnEditarCintasAlmacenadas.Text = "Editar Cintas Almacenadas";
+            btnEditarCintasAlmacenadas.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditarCintasAlmacenadas.UseVisualStyleBackColor = true;
+            btnEditarCintasAlmacenadas.Click += btnEditarCintasAlmacenadas_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(14, 63, 96);
+            panel2.Location = new Point(0, 92);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(291, 10);
+            panel2.TabIndex = 10;
+            // 
             // btnVerCintasAlmacenadas
             // 
             btnVerCintasAlmacenadas.FlatAppearance.BorderSize = 0;
@@ -97,12 +125,13 @@
             btnVerCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
             btnVerCintasAlmacenadas.ForeColor = SystemColors.ButtonFace;
             btnVerCintasAlmacenadas.Image = Properties.Resources.almacen;
-            btnVerCintasAlmacenadas.Location = new Point(-6, 95);
+            btnVerCintasAlmacenadas.Location = new Point(-6, 97);
             btnVerCintasAlmacenadas.Name = "btnVerCintasAlmacenadas";
-            btnVerCintasAlmacenadas.Size = new Size(294, 195);
+            btnVerCintasAlmacenadas.Size = new Size(147, 195);
             btnVerCintasAlmacenadas.TabIndex = 6;
             btnVerCintasAlmacenadas.Text = "Ver Cintas Almacenadas";
             btnVerCintasAlmacenadas.TextAlign = ContentAlignment.BottomCenter;
+            btnVerCintasAlmacenadas.TextImageRelation = TextImageRelation.ImageAboveText;
             btnVerCintasAlmacenadas.UseVisualStyleBackColor = true;
             btnVerCintasAlmacenadas.Click += btnVerCintasAlmacenadas_Click;
             // 
@@ -230,5 +259,7 @@
         private Panel panel2;
         private Panel panel3;
         private PictureBox pictureBox2;
+        private Button btnEditarCintasAlmacenadas;
+        private Panel panel4;
     }
 }

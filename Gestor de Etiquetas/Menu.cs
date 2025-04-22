@@ -36,11 +36,16 @@ namespace Gestor_de_Etiquetas
 
         }
 
+        private void btnEditarCintasAlmacenadas_Click(object sender, EventArgs e)
+        {
+            abrirInterface(new InterfazVerCintasAlmacenadasP2());
+        }
+
 
 
         private void abrirInterface(object formhija)
         {
-            if(this.BarraContenido.Controls.Count > 0)
+            if (this.BarraContenido.Controls.Count > 0)
             {
                 this.BarraContenido.Controls.RemoveAt(0);
             }
@@ -63,5 +68,6 @@ namespace Gestor_de_Etiquetas
 
         }
 
+        
     }
 }

@@ -91,16 +91,17 @@
             // 
             btnImprimirEtiquetaSiguiente.Location = new Point(42, 110);
             btnImprimirEtiquetaSiguiente.Name = "btnImprimirEtiquetaSiguiente";
-            btnImprimirEtiquetaSiguiente.Size = new Size(97, 36);
+            btnImprimirEtiquetaSiguiente.Size = new Size(108, 36);
             btnImprimirEtiquetaSiguiente.TabIndex = 5;
             btnImprimirEtiquetaSiguiente.Text = "Imprimir";
             btnImprimirEtiquetaSiguiente.UseVisualStyleBackColor = true;
+            btnImprimirEtiquetaSiguiente.Click += btnImprimirEtiquetaSiguiente_Click;
             // 
             // btnImprimirEtiquetasSiguientes
             // 
             btnImprimirEtiquetasSiguientes.Location = new Point(42, 297);
             btnImprimirEtiquetasSiguientes.Name = "btnImprimirEtiquetasSiguientes";
-            btnImprimirEtiquetasSiguientes.Size = new Size(97, 36);
+            btnImprimirEtiquetasSiguientes.Size = new Size(108, 36);
             btnImprimirEtiquetasSiguientes.TabIndex = 6;
             btnImprimirEtiquetasSiguientes.Text = "Imprimir";
             btnImprimirEtiquetasSiguientes.UseVisualStyleBackColor = true;
@@ -109,7 +110,7 @@
             // 
             btnImprimirDiezEtiquetas.Location = new Point(42, 426);
             btnImprimirDiezEtiquetas.Name = "btnImprimirDiezEtiquetas";
-            btnImprimirDiezEtiquetas.Size = new Size(97, 36);
+            btnImprimirDiezEtiquetas.Size = new Size(108, 36);
             btnImprimirDiezEtiquetas.TabIndex = 7;
             btnImprimirDiezEtiquetas.Text = "Imprimir";
             btnImprimirDiezEtiquetas.UseVisualStyleBackColor = true;
@@ -126,7 +127,7 @@
             // 
             btnReimprimirEtiqueta.Location = new Point(42, 590);
             btnReimprimirEtiqueta.Name = "btnReimprimirEtiqueta";
-            btnReimprimirEtiqueta.Size = new Size(97, 36);
+            btnReimprimirEtiqueta.Size = new Size(108, 36);
             btnReimprimirEtiqueta.TabIndex = 10;
             btnReimprimirEtiqueta.Text = "Imprimir";
             btnReimprimirEtiqueta.UseVisualStyleBackColor = true;
