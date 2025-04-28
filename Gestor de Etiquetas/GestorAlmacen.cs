@@ -73,13 +73,13 @@ namespace Gestor_de_Etiquetas
         {
             if (IdContenedorExiste(id))
             {
-                MessageBox.Show($"El Contenedor '{id}' ya existe.");
+                //MessageBox.Show($"El Contenedor '{id}' ya existe.");
                 return false;
             }
 
             contenedores.Add(new Contenedor(id, fechaCreacion: fechaCreacion));
             GuardarDatos();
-            MessageBox.Show($"Contenedor '{id}' creado con éxito.");
+            //MessageBox.Show($"Contenedor '{id}' creado con éxito.");
             return true;
         }
 
@@ -97,7 +97,7 @@ namespace Gestor_de_Etiquetas
 
             contenedor.Cintas.Add(new Cinta(idCinta));
             GuardarDatos();
-            MessageBox.Show($"Cinta '{idCinta}' agregada al contenedor '{idContenedor}' con éxito.");
+            //MessageBox.Show($"Cinta '{idCinta}' agregada al contenedor '{idContenedor}' con éxito.");
             return true;
         }
 

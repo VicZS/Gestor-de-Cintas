@@ -10,15 +10,21 @@ using System.Windows.Forms;
 
 using System.IO;
 using System.Drawing.Printing;
-using System.Runtime.InteropServices;  
+using System.Runtime.InteropServices;
+
+using Gestor_de_Etiquetas;
+using System.Numerics;
 
 namespace Gestor_de_Etiquetas
 {
     public partial class InterfazImprimirEtiquetas : Form
     {
+        GestorAlmacen gestor = new GestorAlmacen();
+        string ContenedorLocal = "ContenedorLocal";
         public InterfazImprimirEtiquetas()
         {
             InitializeComponent();
+            gestor.CrearContenedor(ContenedorLocal);
         }
 
         private void ReimprimirEtiqueta_Click(object sender, EventArgs e)
@@ -38,12 +44,35 @@ namespace Gestor_de_Etiquetas
 
             imprimir(etiquetaReimprimir.Text);
 
+            etiquetaReimprimir.Text = string.Empty;
+
         }
 
-        private void etiquetaReimprimir_TextChanged(object sender, EventArgs e)
+        private void etiquetaReimprimir_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(etiquetaReimprimir.Text))
+                {
+                    MessageBox.Show("Por favor, coloque el nombre de la etiqueta a reimprimir");
+                    return;
+                }
 
+                if (etiquetaReimprimir.Text.Length < 8)
+                {
+                    MessageBox.Show("El código escaneado no cuenta con los caracteres suficientes");
+                    return;
+                }
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                imprimir(etiquetaReimprimir.Text);
+
+                etiquetaReimprimir.Text = string.Empty;
+            }
         }
+
 
         private void imprimir(string contenidoEtiqueta)
         {
@@ -84,6 +113,61 @@ namespace Gestor_de_Etiquetas
         private void btnImprimirEtiquetaSiguiente_Click(object sender, EventArgs e)
         {
 
+            string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
+            MessageBox.Show("Etiqueta a imprimir: " + etiquetaSiguiente);
+
+            gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+            imprimir(etiquetaSiguiente);
+            etiquetaReimprimir.Text = string.Empty;
+
+        }
+
+        private void btnImprimirEtiquetasSiguientes_Click(object sender, EventArgs e)
+        {
+            int numeroEtiquetas = (int)numeroEtiquetasSiguientes.Value;
+            //MessageBox.Show("Etiquetas a imprimir: " + numeroEtiquetas);
+
+            if (numeroEtiquetas < 1)
+            {
+                MessageBox.Show("El numero de etiquetas a imprimir debe ser mayor a 0");
+            }
+            else
+            {
+                string mensajeTotalEtiquetas = "Las etiquetas que se imprimieron fueron: ";
+
+                int aux = 0;
+                do
+                {
+
+                    string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
+                    mensajeTotalEtiquetas += etiquetaSiguiente + " ";
+                    gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+                    imprimir(etiquetaSiguiente);
+                    aux++;
+
+                } while (aux < numeroEtiquetas);
+
+                numeroEtiquetasSiguientes.Value = 0;
+                MessageBox.Show(mensajeTotalEtiquetas);
+            }
+
+        }
+
+        private void btnImprimirDiezEtiquetas_Click(object sender, EventArgs e)
+        {
+            int aux = 0;
+            string mensajeTotalEtiquetas = "Las etiquetas que se imprimieron fueron: ";
+            do
+            {
+                string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
+                mensajeTotalEtiquetas += etiquetaSiguiente + " ";
+                gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+                imprimir(etiquetaSiguiente);
+                aux++;
+
+            } while (aux < 10);
+
+            MessageBox.Show(mensajeTotalEtiquetas);
         }
     }
 

@@ -85,7 +85,7 @@
             etiquetaReimprimir.Name = "etiquetaReimprimir";
             etiquetaReimprimir.Size = new Size(229, 30);
             etiquetaReimprimir.TabIndex = 4;
-            etiquetaReimprimir.TextChanged += etiquetaReimprimir_TextChanged;
+            etiquetaReimprimir.KeyDown += etiquetaReimprimir_KeyDown;
             // 
             // btnImprimirEtiquetaSiguiente
             // 
@@ -105,6 +105,7 @@
             btnImprimirEtiquetasSiguientes.TabIndex = 6;
             btnImprimirEtiquetasSiguientes.Text = "Imprimir";
             btnImprimirEtiquetasSiguientes.UseVisualStyleBackColor = true;
+            btnImprimirEtiquetasSiguientes.Click += btnImprimirEtiquetasSiguientes_Click;
             // 
             // btnImprimirDiezEtiquetas
             // 
@@ -114,6 +115,7 @@
             btnImprimirDiezEtiquetas.TabIndex = 7;
             btnImprimirDiezEtiquetas.Text = "Imprimir";
             btnImprimirDiezEtiquetas.UseVisualStyleBackColor = true;
+            btnImprimirDiezEtiquetas.Click += btnImprimirDiezEtiquetas_Click;
             // 
             // numeroEtiquetasSiguientes
             // 

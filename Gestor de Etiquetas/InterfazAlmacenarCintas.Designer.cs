@@ -30,10 +30,10 @@
         {
             label1 = new Label();
             codigoEscaneado = new TextBox();
-            contenedorInterfaz = new Label();
-            listaCintasInterfaz = new CheckedListBox();
+            LContenedor = new Label();
+            CBListaCintas = new CheckedListBox();
             btnEliminarCita = new Button();
-            listaContenedoresInterfaz = new ComboBox();
+            CBListaContenedores = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -51,30 +51,30 @@
             codigoEscaneado.CharacterCasing = CharacterCasing.Upper;
             codigoEscaneado.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             codigoEscaneado.Location = new Point(144, 93);
-            codigoEscaneado.MaxLength = 9;
+            codigoEscaneado.MaxLength = 20;
             codigoEscaneado.Name = "codigoEscaneado";
             codigoEscaneado.Size = new Size(667, 56);
             codigoEscaneado.TabIndex = 1;
-            this.codigoEscaneado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.codigoEscaneado_KeyDown);
-
+            codigoEscaneado.KeyDown += codigoEscaneado_KeyDown;
             // 
-            // contenedorInterfaz
+            // LContenedor
             // 
-            contenedorInterfaz.AutoSize = true;
-            contenedorInterfaz.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            contenedorInterfaz.Location = new Point(12, 402);
-            contenedorInterfaz.Name = "contenedorInterfaz";
-            contenedorInterfaz.Size = new Size(269, 25);
-            contenedorInterfaz.TabIndex = 2;
-            contenedorInterfaz.Text = "Contenedor: T##########";
+            LContenedor.AutoSize = true;
+            LContenedor.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            LContenedor.Location = new Point(12, 402);
+            LContenedor.Name = "LContenedor";
+            LContenedor.Size = new Size(269, 25);
+            LContenedor.TabIndex = 2;
+            LContenedor.Text = "Contenedor: T##########";
             // 
-            // listaCintasInterfaz
+            // CBListaCintas
             // 
-            listaCintasInterfaz.FormattingEnabled = true;
-            listaCintasInterfaz.Location = new Point(338, 402);
-            listaCintasInterfaz.Name = "listaCintasInterfaz";
-            listaCintasInterfaz.Size = new Size(291, 204);
-            listaCintasInterfaz.TabIndex = 4;
+            CBListaCintas.FormattingEnabled = true;
+            CBListaCintas.Location = new Point(338, 402);
+            CBListaCintas.Name = "CBListaCintas";
+            CBListaCintas.Size = new Size(291, 204);
+            CBListaCintas.TabIndex = 4;
+            CBListaCintas.SelectedIndexChanged += CBListaCintas_SelectedIndexChanged;
             // 
             // btnEliminarCita
             // 
@@ -85,15 +85,15 @@
             btnEliminarCita.Text = "Eliminar Cinta Seleccionada";
             btnEliminarCita.UseVisualStyleBackColor = true;
             // 
-            // listaContenedoresInterfaz
+            // CBListaContenedores
             // 
-            listaContenedoresInterfaz.DropDownStyle = ComboBoxStyle.DropDownList;
-            listaContenedoresInterfaz.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listaContenedoresInterfaz.FormattingEnabled = true;
-            listaContenedoresInterfaz.Location = new Point(12, 456);
-            listaContenedoresInterfaz.Name = "listaContenedoresInterfaz";
-            listaContenedoresInterfaz.Size = new Size(269, 37);
-            listaContenedoresInterfaz.TabIndex = 6;
+            CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBListaContenedores.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CBListaContenedores.FormattingEnabled = true;
+            CBListaContenedores.Location = new Point(12, 456);
+            CBListaContenedores.Name = "CBListaContenedores";
+            CBListaContenedores.Size = new Size(269, 37);
+            CBListaContenedores.TabIndex = 6;
             // 
             // InterfazAlmacenarCintas
             // 
@@ -101,10 +101,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 182, 196);
             ClientSize = new Size(976, 678);
-            Controls.Add(listaContenedoresInterfaz);
+            Controls.Add(CBListaContenedores);
             Controls.Add(btnEliminarCita);
-            Controls.Add(listaCintasInterfaz);
-            Controls.Add(contenedorInterfaz);
+            Controls.Add(CBListaCintas);
+            Controls.Add(LContenedor);
             Controls.Add(codigoEscaneado);
             Controls.Add(label1);
             Font = new Font("Comic Sans MS", 12F);
@@ -119,9 +119,9 @@
 
         private Label label1;
         private TextBox codigoEscaneado;
-        private Label contenedorInterfaz;
-        private CheckedListBox listaCintasInterfaz;
+        private Label LContenedor;
+        private CheckedListBox CBListaCintas;
         private Button btnEliminarCita;
-        private ComboBox listaContenedoresInterfaz;
+        private ComboBox CBListaContenedores;
     }
 }
