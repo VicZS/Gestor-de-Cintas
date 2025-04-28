@@ -31,7 +31,7 @@
             label1 = new Label();
             codigoEscaneado = new TextBox();
             LContenedor = new Label();
-            CBListaCintas = new CheckedListBox();
+            CLBListaCintas = new CheckedListBox();
             btnEliminarCita = new Button();
             CBListaContenedores = new ComboBox();
             SuspendLayout();
@@ -67,14 +67,14 @@
             LContenedor.TabIndex = 2;
             LContenedor.Text = "Contenedor: T##########";
             // 
-            // CBListaCintas
+            // CLBListaCintas
             // 
-            CBListaCintas.FormattingEnabled = true;
-            CBListaCintas.Location = new Point(338, 402);
-            CBListaCintas.Name = "CBListaCintas";
-            CBListaCintas.Size = new Size(291, 204);
-            CBListaCintas.TabIndex = 4;
-            CBListaCintas.SelectedIndexChanged += CBListaCintas_SelectedIndexChanged;
+            CLBListaCintas.FormattingEnabled = true;
+            CLBListaCintas.Location = new Point(329, 377);
+            CLBListaCintas.Name = "CLBListaCintas";
+            CLBListaCintas.Size = new Size(330, 254);
+            CLBListaCintas.TabIndex = 4;
+            CLBListaCintas.SelectedIndexChanged += CLBListaCintas_SelectedIndexChanged;
             // 
             // btnEliminarCita
             // 
@@ -84,8 +84,9 @@
             btnEliminarCita.TabIndex = 5;
             btnEliminarCita.Text = "Eliminar Cinta Seleccionada";
             btnEliminarCita.UseVisualStyleBackColor = true;
+            btnEliminarCita.Click += btnEliminarCita_Click;
             // 
-            // CBListaContenedores
+            // CLBListaContenedores
             // 
             CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
             CBListaContenedores.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -94,6 +95,7 @@
             CBListaContenedores.Name = "CBListaContenedores";
             CBListaContenedores.Size = new Size(269, 37);
             CBListaContenedores.TabIndex = 6;
+            CBListaContenedores.SelectedIndexChanged += CBListaContenedores_SelectedIndexChanged;
             // 
             // InterfazAlmacenarCintas
             // 
@@ -103,7 +105,7 @@
             ClientSize = new Size(976, 678);
             Controls.Add(CBListaContenedores);
             Controls.Add(btnEliminarCita);
-            Controls.Add(CBListaCintas);
+            Controls.Add(CLBListaCintas);
             Controls.Add(LContenedor);
             Controls.Add(codigoEscaneado);
             Controls.Add(label1);
@@ -120,8 +122,9 @@
         private Label label1;
         private TextBox codigoEscaneado;
         private Label LContenedor;
-        private CheckedListBox CBListaCintas;
+        private CheckedListBox CLBListaCintas;
         private Button btnEliminarCita;
         private ComboBox CBListaContenedores;
+        private CheckedListBox checkedListBox1;
     }
 }

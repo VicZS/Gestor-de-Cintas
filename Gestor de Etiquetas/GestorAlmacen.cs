@@ -88,7 +88,7 @@ namespace Gestor_de_Etiquetas
         {
             if (IdCintaExiste(idCinta))
             {
-                MessageBox.Show($"La Cinta '{idCinta}' ya existe.");
+                //MessageBox.Show($"La Cinta '{idCinta}' ya existe.");
                 return false; // La cinta ya existe
             }
 

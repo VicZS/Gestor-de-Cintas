@@ -37,49 +37,91 @@ namespace Gestor_de_Etiquetas
                     return;
                 }
 
-
-
-
                 if (codigoEscaneado.Text.StartsWith("T"))
                 {
-                    MessageBox.Show("El código escaneado es una cinta: " + DateTime.Now.Date);
+                    string idContenedor = codigoEscaneado.Text;
+                    DateTime fechaHoy = DateTime.Now.Date;
 
-                    if (gestor.CrearContenedor(codigoEscaneado.Text, DateTime.Now.Date))
+                    // Verifica si el contenedor ya fue creado HOY
+                    var contenedoresHoy = gestor.ObtenerContenedoresPorFecha(fechaHoy);
+                    var contenedorExistenteHoy = contenedoresHoy.FirstOrDefault(c => c.Id == idContenedor);
+
+                    if (contenedorExistenteHoy != null)
                     {
+                        // Ya fue creado hoy
                         ActualizarCBListaContenedores();
-                        CBListaContenedores.SelectedItem = codigoEscaneado.Text;
-                        LContenedor.Text = "Contenedor: " + codigoEscaneado.Text;
-                        //MessageBox.Show("Contenedor creado exitosamente");
+                        CBListaContenedores.SelectedItem = idContenedor;
+                        LContenedor.Text = "Contenedor: " + idContenedor;
+                        MessageBox.Show("El contenedor ya fue creado hoy.");
                         codigoEscaneado.Clear();
                         return;
                     }
 
-                    foreach (var cont in gestor.ObtenerContenedoresPorFecha(DateTime.Now))
+                    // Verifica si el contenedor existe en otra fecha
+                    var todosLosContenedores = gestor.ObtenerTodosLosContenedores(); // Puedes agregar esta función auxiliar si no existe
+                    var contenedorExistente = todosLosContenedores.FirstOrDefault(c => c.Id == idContenedor);
+
+                    if (contenedorExistente != null)
                     {
-
-                        if (cont.FechaCreacion.HasValue && cont.FechaCreacion.Value.Date == DateTime.Now.Date)
-                        {
-                            ActualizarCBListaContenedores();
-                            CBListaContenedores.SelectedItem = codigoEscaneado.Text;
-                            LContenedor.Text = "Contenedor: " + codigoEscaneado.Text;
-                            //MessageBox.Show("El contenedor ya fue creado en la dia de hoy");
-                            codigoEscaneado.Clear();
-                            return;
-                        }
-
+                        // Ya existe, pero en otra fecha
+                        MessageBox.Show("El contenedor ya existe, pero fue creado en otra fecha.");
+                        codigoEscaneado.Clear();
+                        return;
                     }
 
-                   
-                    MessageBox.Show("El contenedor no es valido ya fue creado en otra fecha");
+                    // No existe → Crear nuevo contenedor
+                    if (gestor.CrearContenedor(idContenedor, fechaHoy))
+                    {
+                        ActualizarCBListaContenedores();
+                        CBListaContenedores.SelectedItem = idContenedor;
+                        LContenedor.Text = "Contenedor: " + idContenedor;
+                        MessageBox.Show("Contenedor creado exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al crear el contenedor.");
+                    }
 
                     codigoEscaneado.Clear();
                 }
+
 
                 if (codigoEscaneado.Text.StartsWith("PUE"))
                 {
-                    //MessageBox.Show("El código escaneado es una cinta: " + codigoEscaneado.Text);
+                    if (string.IsNullOrWhiteSpace(CBListaContenedores.Text))
+                    {
+                        MessageBox.Show("Por favor, seleccione un contenedor.");
+                        codigoEscaneado.Clear();
+                        return;
+                    }
+
+                    if (gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text))
+                    {
+                        //MessageBox.Show("Cinta agregada exitosamente.");
+                        ActualizarCBListaCintas(CBListaContenedores.Text);
+                    }
+                    else
+                    {
+                        var contenedor = gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text);
+                        if (contenedor != null)
+                        {
+                            MessageBox.Show("La cinta ya fue escaneada y se encuentra en el contenedor: " + contenedor.Id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("La cinta ya fue escaneada, pero no se encontró su contenedor.");
+                        }
+                    }
+
                     codigoEscaneado.Clear();
                 }
+                else
+                {
+                    MessageBox.Show("El código escaneado no es válido.");
+                    codigoEscaneado.Clear();
+                }
+
+
 
 
                 e.Handled = true;
@@ -87,8 +129,9 @@ namespace Gestor_de_Etiquetas
             }
         }
 
-        private void CBListaCintas_SelectedIndexChanged(object sender, EventArgs e)
+        private void CLBListaCintas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -96,13 +139,80 @@ namespace Gestor_de_Etiquetas
         {
             CBListaContenedores.Items.Clear();
 
-            foreach(var cont in gestor.ObtenerContenedoresPorFecha(DateTime.Now))
+            foreach (var cont in gestor.ObtenerContenedoresPorFecha(DateTime.Now))
             {
                 CBListaContenedores.Items.Add(cont.Id);
             }
         }
 
-       
+        private void CBListaContenedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBListaContenedores.SelectedItem == null)
+            {
+                return;
+            }
+            else
+            {
+                LContenedor.Text = "Contenedor: " + CBListaContenedores.Text;
+                ActualizarCBListaCintas(CBListaContenedores.Text);
+            }
+        }
+
+        private void ActualizarCBListaCintas(string contenedor)
+        {
+            CLBListaCintas.Items.Clear();
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor(contenedor))
+            {
+                CLBListaCintas.Items.Add(cinta.Id);
+            }
+        }
+
+        private void btnEliminarCita_Click(object sender, EventArgs e)
+        {
+            if (CLBListaCintas.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona al menos una cinta para eliminar.");
+                return;
+            }
+
+            // Obtener las cintas seleccionadas (marcadas)
+            List<string> cintasSeleccionadas = CLBListaCintas.CheckedItems
+                .Cast<string>()
+                .ToList();
+
+            MessageBox.Show("Cintas seleccionadas: " + string.Join(", ", cintasSeleccionadas));
+
+            // Crear mensaje de confirmación
+            string mensaje = "¿Estás seguro que deseas eliminar las siguientes cintas?\n\n";
+            mensaje += string.Join("\n", cintasSeleccionadas);
+
+            DialogResult resultado = MessageBox.Show(
+                mensaje,
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                int eliminadas = 0;
+
+                foreach (string idCinta in cintasSeleccionadas)
+                {
+                    if (gestor.EliminarCinta(idCinta))
+                        eliminadas++;
+                }
+
+                MessageBox.Show($"{eliminadas} cinta(s) eliminada(s) correctamente.");
+                ActualizarCBListaCintas(CBListaContenedores.Text);
+            }
+        }
+
+
+
+
+
+
 
 
 
