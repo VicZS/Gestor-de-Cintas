@@ -38,6 +38,7 @@
             btnImprimirDiezEtiquetas = new Button();
             numeroEtiquetasSiguientes = new NumericUpDown();
             btnReimprimirEtiqueta = new Button();
+            LCintaSiguiente = new Label();
             ((System.ComponentModel.ISupportInitialize)numeroEtiquetasSiguientes).BeginInit();
             SuspendLayout();
             // 
@@ -135,12 +136,24 @@
             btnReimprimirEtiqueta.UseVisualStyleBackColor = true;
             btnReimprimirEtiqueta.Click += ReimprimirEtiqueta_Click;
             // 
+            // LCintaSiguiente
+            // 
+            LCintaSiguiente.AutoSize = true;
+            LCintaSiguiente.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            LCintaSiguiente.Location = new Point(549, 68);
+            LCintaSiguiente.Name = "LCintaSiguiente";
+            LCintaSiguiente.Size = new Size(392, 23);
+            LCintaSiguiente.TabIndex = 11;
+            LCintaSiguiente.Text = "La Siguiente Etiqueta a Imprimir es: PUE###L6";
+            LCintaSiguiente.Click += LCintaSiguiente_Click;
+            // 
             // InterfazImprimirEtiquetas
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 182, 196);
             ClientSize = new Size(976, 678);
+            Controls.Add(LCintaSiguiente);
             Controls.Add(btnReimprimirEtiqueta);
             Controls.Add(numeroEtiquetasSiguientes);
             Controls.Add(btnImprimirDiezEtiquetas);
@@ -173,5 +186,6 @@
         private Button btnImprimirDiezEtiquetas;
         private NumericUpDown numeroEtiquetasSiguientes;
         private Button btnReimprimirEtiqueta;
+        private Label LCintaSiguiente;
     }
 }

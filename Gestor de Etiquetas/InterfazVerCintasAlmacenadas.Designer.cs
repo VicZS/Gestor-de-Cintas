@@ -58,7 +58,7 @@
             label9 = new Label();
             panel5 = new Panel();
             label10 = new Label();
-            listaCintasUso = new ListView();
+            LVListaCintasAlmacenLocal = new ListView();
             SuspendLayout();
             // 
             // monthCalendar1
@@ -112,7 +112,9 @@
             // 
             // TBCintaABuscar
             // 
+            TBCintaABuscar.CharacterCasing = CharacterCasing.Upper;
             TBCintaABuscar.Location = new Point(462, 27);
+            TBCintaABuscar.MaxLength = 8;
             TBCintaABuscar.Name = "TBCintaABuscar";
             TBCintaABuscar.Size = new Size(233, 30);
             TBCintaABuscar.TabIndex = 9;
@@ -316,17 +318,18 @@
             label10.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.Location = new Point(326, 359);
             label10.Name = "label10";
-            label10.Size = new Size(255, 26);
+            label10.Size = new Size(220, 26);
             label10.TabIndex = 43;
-            label10.Text = "Cintas en Caja Fuerte / Uso";
+            label10.Text = "Cintas en Almacen Local";
             // 
-            // listaCintasUso
+            // LVListaCintasAlmacenLocal
             // 
-            listaCintasUso.Location = new Point(328, 388);
-            listaCintasUso.Name = "listaCintasUso";
-            listaCintasUso.Size = new Size(283, 97);
-            listaCintasUso.TabIndex = 44;
-            listaCintasUso.UseCompatibleStateImageBehavior = false;
+            LVListaCintasAlmacenLocal.Location = new Point(317, 388);
+            LVListaCintasAlmacenLocal.Name = "LVListaCintasAlmacenLocal";
+            LVListaCintasAlmacenLocal.Size = new Size(308, 97);
+            LVListaCintasAlmacenLocal.TabIndex = 44;
+            LVListaCintasAlmacenLocal.UseCompatibleStateImageBehavior = false;
+            LVListaCintasAlmacenLocal.View = View.List;
             // 
             // InterfazVerCintasAlmacenadas
             // 
@@ -334,7 +337,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 182, 196);
             ClientSize = new Size(976, 678);
-            Controls.Add(listaCintasUso);
+            Controls.Add(LVListaCintasAlmacenLocal);
             Controls.Add(label10);
             Controls.Add(panel5);
             Controls.Add(label9);
@@ -405,6 +408,6 @@
         private Label label9;
         private Panel panel5;
         private Label label10;
-        private ListView listaCintasUso;
+        private ListView LVListaCintasAlmacenLocal;
     }
 }

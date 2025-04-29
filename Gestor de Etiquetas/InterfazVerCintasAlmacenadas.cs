@@ -19,6 +19,7 @@ namespace Gestor_de_Etiquetas
         public InterfazVerCintasAlmacenadas()
         {
             InitializeComponent();
+            ActualizarLVListaCisntasAlmacenLocal();
         }
 
         private void btnBuscarCinta_Click(object sender, EventArgs e)
@@ -56,5 +57,17 @@ namespace Gestor_de_Etiquetas
             gestor.ExportarContenedoresAExcel(result, nombreArchivo);
             MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
         }
+
+        private void ActualizarLVListaCisntasAlmacenLocal()
+        {
+            LVListaCintasAlmacenLocal.Items.Clear();
+
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor("ContenedorLocal"))
+            {
+                
+                LVListaCintasAlmacenLocal.Items.Add(cinta.Id.ToString());
+            }
+        }
+
     }
 }

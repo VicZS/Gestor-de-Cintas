@@ -25,6 +25,7 @@ namespace Gestor_de_Etiquetas
         {
             InitializeComponent();
             gestor.CrearContenedor(ContenedorLocal);
+            ActualizarLCintaSiguiente();
         }
 
         private void ReimprimirEtiqueta_Click(object sender, EventArgs e)
@@ -102,11 +103,13 @@ namespace Gestor_de_Etiquetas
             bool success = ZebraPrinter.SendZplToPrinter(printerName, zpl);
             if (success)
             {
-                MessageBox.Show("Etiqueta Enviada a la Impresora Correctamente.");
+                //MessageBox.Show("Etiqueta Enviada a la Impresora Correctamente.");
+                ActualizarLCintaSiguiente();
             }
             else
             {
                 MessageBox.Show("Error al Enviar la Etiqueta a la Impresora.");
+                ActualizarLCintaSiguiente();
             }
         }
 
@@ -119,7 +122,7 @@ namespace Gestor_de_Etiquetas
             gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
             imprimir(etiquetaSiguiente);
             etiquetaReimprimir.Text = string.Empty;
-
+            ActualizarLCintaSiguiente();
         }
 
         private void btnImprimirEtiquetasSiguientes_Click(object sender, EventArgs e)
@@ -149,6 +152,7 @@ namespace Gestor_de_Etiquetas
 
                 numeroEtiquetasSiguientes.Value = 0;
                 MessageBox.Show(mensajeTotalEtiquetas);
+                ActualizarLCintaSiguiente();
             }
 
         }
@@ -168,7 +172,20 @@ namespace Gestor_de_Etiquetas
             } while (aux < 10);
 
             MessageBox.Show(mensajeTotalEtiquetas);
+            ActualizarLCintaSiguiente();
         }
+
+        private void LCintaSiguiente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ActualizarLCintaSiguiente()
+        {
+            LCintaSiguiente.Text = "La Siguiente etiqueta a imprimir es: " + gestor.ObtenerSiguienteIdCinta().ToString();
+        }
+
+
     }
 
     public class ZebraPrinter

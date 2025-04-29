@@ -69,6 +69,7 @@
             // 
             // CLBListaCintas
             // 
+            CLBListaCintas.CheckOnClick = true;
             CLBListaCintas.FormattingEnabled = true;
             CLBListaCintas.Location = new Point(329, 377);
             CLBListaCintas.Name = "CLBListaCintas";
@@ -86,7 +87,7 @@
             btnEliminarCita.UseVisualStyleBackColor = true;
             btnEliminarCita.Click += btnEliminarCita_Click;
             // 
-            // CLBListaContenedores
+            // CBListaContenedores
             // 
             CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
             CBListaContenedores.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);

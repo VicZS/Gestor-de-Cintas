@@ -75,7 +75,7 @@ namespace Gestor_de_Etiquetas
                         ActualizarCBListaContenedores();
                         CBListaContenedores.SelectedItem = idContenedor;
                         LContenedor.Text = "Contenedor: " + idContenedor;
-                        MessageBox.Show("Contenedor creado exitosamente.");
+                        //MessageBox.Show("Contenedor creado exitosamente.");
                     }
                     else
                     {
@@ -83,6 +83,7 @@ namespace Gestor_de_Etiquetas
                     }
 
                     codigoEscaneado.Clear();
+                    return;
                 }
 
 
@@ -95,10 +96,20 @@ namespace Gestor_de_Etiquetas
                         return;
                     }
 
-                    if (gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text))
+                    if(gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text) == null)
                     {
-                        //MessageBox.Show("Cinta agregada exitosamente.");
+                        MessageBox.Show("La cinta escaneada no existe en el sistema.");
+                        codigoEscaneado.Clear();
+                        return;
+                    }
+
+
+                    if (gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "ContenedorLocal")
+                    {
+                        gestor.EliminarCinta(codigoEscaneado.Text);
+                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text);
                         ActualizarCBListaCintas(CBListaContenedores.Text);
+
                     }
                     else
                     {
@@ -114,15 +125,11 @@ namespace Gestor_de_Etiquetas
                     }
 
                     codigoEscaneado.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("El código escaneado no es válido.");
-                    codigoEscaneado.Clear();
+                    return;
                 }
 
-
-
+                MessageBox.Show("El código escaneado no es válido.");
+                codigoEscaneado.Clear();
 
                 e.Handled = true;
                 e.SuppressKeyPress = true;
