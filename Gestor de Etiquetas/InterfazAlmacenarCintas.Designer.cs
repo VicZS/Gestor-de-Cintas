@@ -28,58 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfazAlmacenarCintas));
             codigoEscaneado = new TextBox();
             LContenedor = new Label();
             CLBListaCintas = new CheckedListBox();
             btnEliminarCita = new Button();
             CBListaContenedores = new ComboBox();
+            panel1 = new Panel();
+            label1 = new Label();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label3 = new Label();
+            pictureBox2 = new PictureBox();
+            TBResguardarCinta = new TextBox();
+            CLBCintasEnUso = new CheckedListBox();
+            btnResguardarCinta = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Comic Sans MS", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(245, 183);
-            label1.Name = "label1";
-            label1.Size = new Size(468, 67);
-            label1.TabIndex = 0;
-            label1.Text = "Empieza a Escanear";
             // 
             // codigoEscaneado
             // 
             codigoEscaneado.CharacterCasing = CharacterCasing.Upper;
             codigoEscaneado.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            codigoEscaneado.Location = new Point(144, 93);
+            codigoEscaneado.Location = new Point(492, 164);
             codigoEscaneado.MaxLength = 20;
             codigoEscaneado.Name = "codigoEscaneado";
-            codigoEscaneado.Size = new Size(667, 56);
+            codigoEscaneado.Size = new Size(461, 56);
             codigoEscaneado.TabIndex = 1;
             codigoEscaneado.KeyDown += codigoEscaneado_KeyDown;
             // 
             // LContenedor
             // 
             LContenedor.AutoSize = true;
-            LContenedor.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            LContenedor.Location = new Point(12, 402);
+            LContenedor.Font = new Font("Microsoft Sans Serif", 18.75F, FontStyle.Italic);
+            LContenedor.Location = new Point(562, 253);
             LContenedor.Name = "LContenedor";
-            LContenedor.Size = new Size(269, 25);
+            LContenedor.Size = new Size(313, 29);
             LContenedor.TabIndex = 2;
             LContenedor.Text = "Contenedor: T##########";
             // 
             // CLBListaCintas
             // 
             CLBListaCintas.CheckOnClick = true;
+            CLBListaCintas.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CLBListaCintas.FormattingEnabled = true;
-            CLBListaCintas.Location = new Point(329, 377);
+            CLBListaCintas.Location = new Point(492, 350);
             CLBListaCintas.Name = "CLBListaCintas";
-            CLBListaCintas.Size = new Size(330, 254);
+            CLBListaCintas.Size = new Size(472, 236);
             CLBListaCintas.TabIndex = 4;
             CLBListaCintas.SelectedIndexChanged += CLBListaCintas_SelectedIndexChanged;
             // 
             // btnEliminarCita
             // 
-            btnEliminarCita.Location = new Point(749, 447);
+            btnEliminarCita.Location = new Point(640, 610);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(165, 56);
             btnEliminarCita.TabIndex = 5;
@@ -90,13 +92,105 @@
             // CBListaContenedores
             // 
             CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBListaContenedores.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CBListaContenedores.Font = new Font("Comic Sans MS", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CBListaContenedores.FormattingEnabled = true;
-            CBListaContenedores.Location = new Point(12, 456);
+            CBListaContenedores.Location = new Point(492, 303);
             CBListaContenedores.Name = "CBListaContenedores";
-            CBListaContenedores.Size = new Size(269, 37);
+            CBListaContenedores.Size = new Size(472, 41);
             CBListaContenedores.TabIndex = 6;
             CBListaContenedores.SelectedIndexChanged += CBListaContenedores_SelectedIndexChanged;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(14, 63, 96);
+            panel1.Location = new Point(458, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(10, 678);
+            panel1.TabIndex = 7;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(592, 51);
+            label1.Name = "label1";
+            label1.Size = new Size(372, 29);
+            label1.TabIndex = 8;
+            label1.Text = "Escanea Aqui para Almacenar Cintas ";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.delivery;
+            pictureBox1.Location = new Point(470, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(111, 108);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(592, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(140, 29);
+            label2.TabIndex = 10;
+            label2.Text = "para su Envio";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(88, 55);
+            label3.Name = "label3";
+            label3.Size = new Size(380, 29);
+            label3.TabIndex = 11;
+            label3.Text = "Escanea Aqui para Resguardar Cintas ";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(8, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(82, 80);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 12;
+            pictureBox2.TabStop = false;
+            // 
+            // TBResguardarCinta
+            // 
+            TBResguardarCinta.CharacterCasing = CharacterCasing.Upper;
+            TBResguardarCinta.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBResguardarCinta.Location = new Point(21, 164);
+            TBResguardarCinta.MaxLength = 20;
+            TBResguardarCinta.Name = "TBResguardarCinta";
+            TBResguardarCinta.Size = new Size(412, 56);
+            TBResguardarCinta.TabIndex = 13;
+            TBResguardarCinta.TextChanged += TBResguardarCinta_TextChanged;
+            TBResguardarCinta.KeyDown += TBResguardarCinta_KeyDown;
+            // 
+            // CLBCintasEnUso
+            // 
+            CLBCintasEnUso.CheckOnClick = true;
+            CLBCintasEnUso.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CLBCintasEnUso.FormattingEnabled = true;
+            CLBCintasEnUso.Location = new Point(21, 303);
+            CLBCintasEnUso.Name = "CLBCintasEnUso";
+            CLBCintasEnUso.Size = new Size(412, 236);
+            CLBCintasEnUso.TabIndex = 14;
+            // 
+            // btnResguardarCinta
+            // 
+            btnResguardarCinta.Location = new Point(143, 573);
+            btnResguardarCinta.Name = "btnResguardarCinta";
+            btnResguardarCinta.Size = new Size(165, 56);
+            btnResguardarCinta.TabIndex = 15;
+            btnResguardarCinta.Text = "Resguardar Cinta Seleccionada";
+            btnResguardarCinta.UseVisualStyleBackColor = true;
+            btnResguardarCinta.Click += btnResguardarCinta_Click;
             // 
             // InterfazAlmacenarCintas
             // 
@@ -104,28 +198,44 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(164, 182, 196);
             ClientSize = new Size(976, 678);
+            Controls.Add(btnResguardarCinta);
+            Controls.Add(CLBCintasEnUso);
+            Controls.Add(TBResguardarCinta);
+            Controls.Add(pictureBox2);
+            Controls.Add(panel1);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(pictureBox1);
+            Controls.Add(label1);
             Controls.Add(CBListaContenedores);
             Controls.Add(btnEliminarCita);
             Controls.Add(CLBListaCintas);
             Controls.Add(LContenedor);
             Controls.Add(codigoEscaneado);
-            Controls.Add(label1);
             Font = new Font("Comic Sans MS", 12F);
             FormBorderStyle = FormBorderStyle.None;
             Name = "InterfazAlmacenarCintas";
             Text = "InterfazAlmacenarCintas";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private TextBox codigoEscaneado;
         private Label LContenedor;
         private CheckedListBox CLBListaCintas;
         private Button btnEliminarCita;
         private ComboBox CBListaContenedores;
-        private CheckedListBox checkedListBox1;
+        private Panel panel1;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private Label label2;
+        private Label label3;
+        private PictureBox pictureBox2;
+        private TextBox TBResguardarCinta;
+        private CheckedListBox CLBCintasEnUso;
+        private Button btnResguardarCinta;
     }
 }

@@ -216,6 +216,12 @@ namespace Gestor_de_Etiquetas
             return contenedores ?? new List<Contenedor>(); // Lista vacía si contenedores es null
         }
 
+        //Lista de todas las cintas
+        public List<Cinta> ObtenerTodasLasCintas()
+        {
+            return contenedores.SelectMany(c => c.Cintas).ToList();
+        }
+
         //Obtener siguiente cinta
         public string ObtenerSiguienteIdCinta()
         {
@@ -250,6 +256,13 @@ namespace Gestor_de_Etiquetas
             int siguienteNumero = ultimo.Numero + 1;
             string siguienteId = $"{ultimo.Prefijo}{siguienteNumero.ToString("D3")}{ultimo.Sufijo}";
             return siguienteId;
+        }
+
+        //Obtener fecha de creación de un contenedor por ID
+        public DateTime? ObtenerFechaCreacionContenedorPorId(string idContenedor)
+        {
+            var contenedor = contenedores.FirstOrDefault(c => c.Id == idContenedor);
+            return contenedor?.FechaCreacion;
         }
 
         //Crear Excel
@@ -313,10 +326,114 @@ namespace Gestor_de_Etiquetas
                 // Ajustar ancho automático
                 ws.Columns().AdjustToContents();
 
-                workbook.SaveAs(rutaCompleta);
+                try
+                {
+                    workbook.SaveAs(rutaCompleta);
+                }
+                catch (IOException)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        "No se puede guardar el archivo porque ya está abierto.\nPor favor, cierre el archivo y vuelva a intentarlo.",
+                        "Error al guardar",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        $"Ocurrió un error inesperado:\n{ex.Message}",
+                        "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error
+                    );
+                }
+
+                MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
             }
         }
 
+        public void ExportarCintasDeContenedorAExcel(List<Cinta> cintas, string nombreContenedor)
+        {
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string rutaReportes = Path.Combine(escritorio, "Reportes");
+
+            if (!Directory.Exists(rutaReportes))
+                Directory.CreateDirectory(rutaReportes);
+
+            string rutaCompleta = Path.Combine(rutaReportes, $"Contenedor {nombreContenedor}.xlsx");
+
+            using (var workbook = new XLWorkbook())
+            {
+                var ws = workbook.Worksheets.Add("Cintas");
+
+                ws.Cell(1, 1).Value = "ID Contenedor";
+                ws.Cell(1, 2).Value = "Fecha de Creación";
+                ws.Cell(1, 3).Value = "ID Cinta";
+
+                int fila = 2;
+                int inicioBloque = fila;
+
+                //var fechaCreacion = ObtenerFechaCreacionContenedorPorId(nombreContenedor);
+                if (cintas.Count == 0)
+                {
+                    // Sin cintas: solo una fila
+                    ws.Cell(fila, 1).Value = nombreContenedor;
+                    ws.Cell(fila, 2).Value = ObtenerFechaCreacionContenedorPorId(nombreContenedor)?.ToString("dd-MM-yy") ?? "";
+                    fila++;
+                }
+                else
+                {
+                    foreach (var cinta in cintas)
+                    {
+                        ws.Cell(fila, 3).Value = cinta.Id;
+                        fila++;
+                    }
+
+                    // Combinar celdas para contenedor y fecha
+                    ws.Range(inicioBloque, 1, fila - 1, 1).Merge().Value = nombreContenedor;
+                    ws.Range(inicioBloque, 2, fila - 1, 2).Merge().Value = ObtenerFechaCreacionContenedorPorId(nombreContenedor)?.ToString("dd-MM-yy") ?? "";
+
+                    // Centrado vertical y horizontal
+                    ws.Range(inicioBloque, 1, fila - 1, 2).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    ws.Range(inicioBloque, 1, fila - 1, 2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+                    // Borde grueso alrededor del bloque del contenedor
+                    ws.Range(inicioBloque, 1, fila - 1, 3).Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
+                }
+                fila++; // Fila vacía entre contenedores
+
+                try
+                {
+                    ws.Columns().AdjustToContents();
+                    workbook.SaveAs(rutaCompleta);
+                }
+                catch (IOException)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        "No se puede guardar el archivo porque ya está abierto.\nPor favor, cierre el archivo y vuelva a intentarlo.",
+                        "Error al guardar",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        $"Ocurrió un error inesperado:\n{ex.Message}",
+                        "Error",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error
+                    );
+                }
+
+                MessageBox.Show($"Reporte generado con éxito: Contenedor {nombreContenedor}.xlsx");
+            }
+        }
 
     }
 }

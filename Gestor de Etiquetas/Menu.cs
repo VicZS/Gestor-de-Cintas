@@ -1,10 +1,17 @@
+using System.Numerics;
+
 namespace Gestor_de_Etiquetas
 {
     public partial class Menu : Form
     {
+        GestorAlmacen gestor = new GestorAlmacen();
+        string ContenedorResguardo = "Resguardo";
+        string ContenedorEnUso = "EnUso";
         public Menu()
         {
             InitializeComponent();
+            gestor.CrearContenedor(ContenedorResguardo);
+            gestor.CrearContenedor(ContenedorEnUso);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -68,6 +75,9 @@ namespace Gestor_de_Etiquetas
 
         }
 
-        
+        private void btnAbrirMenuReportes_Click(object sender, EventArgs e)
+        {
+            abrirInterface(new InterfazGenerarReporte());
+        }
     }
 }

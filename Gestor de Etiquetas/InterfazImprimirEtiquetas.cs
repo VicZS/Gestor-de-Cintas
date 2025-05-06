@@ -20,11 +20,13 @@ namespace Gestor_de_Etiquetas
     public partial class InterfazImprimirEtiquetas : Form
     {
         GestorAlmacen gestor = new GestorAlmacen();
-        string ContenedorLocal = "ContenedorLocal";
+        string ContenedorResguardo = "Resguardo";
+        string ContenedorEnUso = "EnUso";
         public InterfazImprimirEtiquetas()
         {
             InitializeComponent();
-            gestor.CrearContenedor(ContenedorLocal);
+            gestor.CrearContenedor(ContenedorEnUso);
+            gestor.CrearContenedor(ContenedorResguardo);
             ActualizarLCintaSiguiente();
         }
 
@@ -119,7 +121,7 @@ namespace Gestor_de_Etiquetas
             string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
             MessageBox.Show("Etiqueta a imprimir: " + etiquetaSiguiente);
 
-            gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+            gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
             imprimir(etiquetaSiguiente);
             etiquetaReimprimir.Text = string.Empty;
             ActualizarLCintaSiguiente();
@@ -144,7 +146,7 @@ namespace Gestor_de_Etiquetas
 
                     string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
                     mensajeTotalEtiquetas += etiquetaSiguiente + " ";
-                    gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+                    gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
                     imprimir(etiquetaSiguiente);
                     aux++;
 
@@ -165,7 +167,7 @@ namespace Gestor_de_Etiquetas
             {
                 string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
                 mensajeTotalEtiquetas += etiquetaSiguiente + " ";
-                gestor.AgregarCintaAContenedor(ContenedorLocal, etiquetaSiguiente);
+                gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
                 imprimir(etiquetaSiguiente);
                 aux++;
 

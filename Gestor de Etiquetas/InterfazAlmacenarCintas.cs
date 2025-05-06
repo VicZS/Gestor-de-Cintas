@@ -15,10 +15,15 @@ namespace Gestor_de_Etiquetas
     public partial class InterfazAlmacenarCintas : Form
     {
         GestorAlmacen gestor = new GestorAlmacen();
+        string ContenedorResguardo = "Resguardo";
+        string ContenedorEnUso = "EnUso";
         public InterfazAlmacenarCintas()
         {
             InitializeComponent();
             ActualizarCBListaContenedores();
+            ActualizarCBCintasEnUso();
+            gestor.CrearContenedor(ContenedorResguardo);
+            gestor.CrearContenedor(ContenedorEnUso);
         }
 
         private void codigoEscaneado_KeyDown(object sender, KeyEventArgs e)
@@ -50,6 +55,7 @@ namespace Gestor_de_Etiquetas
                     {
                         // Ya fue creado hoy
                         ActualizarCBListaContenedores();
+                        ActualizarCBCintasEnUso();
                         CBListaContenedores.SelectedItem = idContenedor;
                         LContenedor.Text = "Contenedor: " + idContenedor;
                         MessageBox.Show("El contenedor ya fue creado hoy.");
@@ -73,6 +79,7 @@ namespace Gestor_de_Etiquetas
                     if (gestor.CrearContenedor(idContenedor, fechaHoy))
                     {
                         ActualizarCBListaContenedores();
+                        ActualizarCBCintasEnUso();
                         CBListaContenedores.SelectedItem = idContenedor;
                         LContenedor.Text = "Contenedor: " + idContenedor;
                         //MessageBox.Show("Contenedor creado exitosamente.");
@@ -96,7 +103,7 @@ namespace Gestor_de_Etiquetas
                         return;
                     }
 
-                    if(gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text) == null)
+                    if (gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text) == null)
                     {
                         MessageBox.Show("La cinta escaneada no existe en el sistema.");
                         codigoEscaneado.Clear();
@@ -104,12 +111,12 @@ namespace Gestor_de_Etiquetas
                     }
 
 
-                    if (gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "ContenedorLocal")
+                    if (gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "Resguardo" || gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "EnUso")
                     {
                         gestor.EliminarCinta(codigoEscaneado.Text);
                         gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text);
                         ActualizarCBListaCintas(CBListaContenedores.Text);
-
+                        ActualizarCBCintasEnUso();
                     }
                     else
                     {
@@ -138,7 +145,7 @@ namespace Gestor_de_Etiquetas
 
         private void CLBListaCintas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -215,14 +222,127 @@ namespace Gestor_de_Etiquetas
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBResguardarCinta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(TBResguardarCinta.Text))
+                {
+                    MessageBox.Show("Por favor, escanee un código.");
+                    return;
+                }
+
+                if (TBResguardarCinta.Text.Length < 8)
+                {
+                    MessageBox.Show("El código escaneado no cuenta con los caracteres suficientes");
+                    return;
+                }
+
+                if (TBResguardarCinta.Text.StartsWith("PUE"))
+                {
+
+                    if (gestor.ObtenerContenedorDeCinta(TBResguardarCinta.Text) == null)
+                    {
+                        MessageBox.Show("La cinta escaneada no existe en el sistema.");
+                        TBResguardarCinta.Clear();
+                        return;
+                    }
 
 
+                    if (gestor.ObtenerContenedorDeCinta(TBResguardarCinta.Text).Id.ToString() == "EnUso")
+                    {
+                        gestor.EliminarCinta(TBResguardarCinta.Text);
+                        gestor.AgregarCintaAContenedor("Resguardo", TBResguardarCinta.Text);
+                        ActualizarCBCintasEnUso();
+
+                    }
+                    else
+                    {
+                        var contenedor = gestor.ObtenerContenedorDeCinta(TBResguardarCinta.Text);
+                        if (contenedor != null)
+                        {
+                            MessageBox.Show("La cinta escaneada se encuentra en el contenedor: " + contenedor.Id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("La cinta ya fue escaneada, pero no se encontró su contenedor.");
+                        }
+                    }
+
+                    TBResguardarCinta.Clear();
+                    return;
+                }
+
+                MessageBox.Show("El código escaneado no es válido.");
+                codigoEscaneado.Clear();
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void ActualizarCBCintasEnUso()
+        {
+            CLBCintasEnUso.Items.Clear();
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor("EnUso"))
+            {
+                CLBCintasEnUso.Items.Add(cinta.Id);
+            }
+        }
+
+        private void btnResguardarCinta_Click(object sender, EventArgs e)
+        {
+            if (CLBCintasEnUso.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona al menos una cinta para resguardar.");
+                return;
+            }
+
+            // Obtener las cintas seleccionadas (marcadas)
+            List<string> cintasSeleccionadas = CLBCintasEnUso.CheckedItems
+                .Cast<string>()
+                .ToList();
+
+            MessageBox.Show("Cintas seleccionadas: " + string.Join(", ", cintasSeleccionadas));
+
+            // Crear mensaje de confirmación
+            string mensaje = "¿Estás seguro que deseas resguardar las siguientes cintas?\n\n";
+            mensaje += string.Join("\n", cintasSeleccionadas);
+
+            DialogResult resultado = MessageBox.Show(
+                mensaje,
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                int resguardadas = 0;
+
+                foreach (string idCinta in cintasSeleccionadas)
+                {
+                    gestor.EliminarCinta(idCinta);
+                    gestor.AgregarCintaAContenedor("Resguardo", idCinta);
+                    ActualizarCBCintasEnUso();
+                    resguardadas++;
+                }
+
+                MessageBox.Show($"{resguardadas} cinta(s) resguardada(s) correctamente.");
+                ActualizarCBCintasEnUso();
+            }
 
 
+        }
 
+        private void TBResguardarCinta_TextChanged(object sender, EventArgs e)
+        {
 
-
-
-
+        }
     }
 }

@@ -20,6 +20,9 @@ namespace Gestor_de_Etiquetas
         {
             InitializeComponent();
             ActualizarLVListaCisntasAlmacenLocal();
+            ActualizarLVListaCintasEnUso();
+            ActualizarLVListaContenedoresConCintasReutilizar();
+            ActualizarCBContenedorCintasAMostrar();
         }
 
         private void btnBuscarCinta_Click(object sender, EventArgs e)
@@ -38,36 +41,66 @@ namespace Gestor_de_Etiquetas
             }
         }
 
-        private void btnGenerarExcelDia_Click(object sender, EventArgs e)
-        {
-            var result = gestor.ObtenerContenedoresPorFecha(DTPGenerarExelDia.Value);
-
-            string nombreArchivo = "Reporte del dia " + DateTime.Now.ToString("yyyyMMdd");
-
-            gestor.ExportarContenedoresAExcel(result, nombreArchivo);
-
-            MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
-        }
-
-        private void btnGenerarExcelEntreDias_Click(object sender, EventArgs e)
-        {
-            var result = gestor.ObtenerContenedoresEntreFechas(DTPGenerarExelDiaInicio.Value, DTPGenerarExelDiaFin.Value);
-
-            string nombreArchivo = "Reporte entre " + DTPGenerarExelDiaInicio.Value.ToString("yyyyMMdd") + " y " + DTPGenerarExelDiaFin.Value.ToString("yyyyMMdd");
-            gestor.ExportarContenedoresAExcel(result, nombreArchivo);
-            MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
-        }
 
         private void ActualizarLVListaCisntasAlmacenLocal()
         {
             LVListaCintasAlmacenLocal.Items.Clear();
 
-            foreach (var cinta in gestor.ObtenerCintasDeContenedor("ContenedorLocal"))
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor("Resguardo"))
             {
-                
+
                 LVListaCintasAlmacenLocal.Items.Add(cinta.Id.ToString());
             }
         }
+
+        private void ActualizarLVListaCintasEnUso()
+        {
+            LVListaCintasEnUso.Items.Clear();
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor("EnUso"))
+            {
+                LVListaCintasEnUso.Items.Add(cinta.Id.ToString());
+            }
+        }
+
+        private void ActualizarLVListaContenedoresConCintasReutilizar()
+        {
+            LVListaContenedoresConCintasReutilizar.Items.Clear();
+            foreach (var contenedor in gestor.ObtenerContenedoresMayoresA90Dias())
+            {
+                LVListaContenedoresConCintasReutilizar.Items.Add(contenedor.Id.ToString());
+            }
+        }
+
+        private void CBContenedorCintasAMostrar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LVListaCintasContenedor.Items.Clear();
+            foreach (var cinta in gestor.ObtenerCintasDeContenedor(CBContenedorCintasAMostrar.Text))
+            {
+                LVListaCintasContenedor.Items.Add(cinta.Id.ToString());
+            }
+        }
+
+
+        private void ActualizarCBContenedorCintasAMostrar()
+        {
+            CBContenedorCintasAMostrar.Items.Clear();
+            foreach (var contenedor in gestor.ObtenerTodosLosContenedores())
+            {
+                CBContenedorCintasAMostrar.Items.Add(contenedor.Id.ToString());
+            }
+        }
+
+        private void DTPMostrarContenedores_ValueChanged(object sender, EventArgs e)
+        {
+            LVListaContenedoresDelDia.Items.Clear();
+            foreach (var contenedor in gestor.ObtenerContenedoresPorFecha(DTPMostrarContenedores.Value))
+            {
+                LVListaContenedoresDelDia.Items.Add(contenedor.Id.ToString());
+            }
+
+        }
+
+
 
     }
 }

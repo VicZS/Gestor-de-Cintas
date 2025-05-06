@@ -19,6 +19,8 @@ namespace Gestor_de_Etiquetas
         {
             InitializeComponent();
             CargarContenedoresEnComboBox();
+            ActualizarCBListaContenedoresEliminar();
+            ActualizarCLBListaCintasEliminar();
         }
 
         private void InterfazVerCintasAlmacenadasP2_Load(object sender, EventArgs e)
@@ -38,17 +40,45 @@ namespace Gestor_de_Etiquetas
                 return;
             }
 
-            try
+            if (nombreNuevoContenedor.Length < 8)
             {
-                gestor.CrearContenedor(nombreNuevoContenedor, fechaCreacion);
-                //MessageBox.Show($"Contenedor '{nombreNuevoContenedor}' creado con éxito.");
-                TBCrearContenedor.Clear();
-                CargarContenedoresEnComboBox();
+                MessageBox.Show("El nombre del contenedor no cuenta con los caracteres suficientes");
+                return;
             }
-            catch (Exception ex)
+
+            if (nombreNuevoContenedor.StartsWith("T"))
             {
-                MessageBox.Show($"Error al crear contenedor: {ex.Message}");
+               
+                var todosLosContenedores = gestor.ObtenerTodosLosContenedores(); 
+                var contenedorExistente = todosLosContenedores.FirstOrDefault(c => c.Id == nombreNuevoContenedor);
+
+                if (contenedorExistente != null)
+                {
+             
+                    MessageBox.Show("El contenedor ya existe");
+                    TBCrearContenedor.Clear();
+                    return;
+                }
+
+                // No existe → Crear nuevo contenedor
+                if (gestor.CrearContenedor(nombreNuevoContenedor, fechaCreacion))
+                {
+                    ActualizarCBListaContenedoresEliminar();
+                    ActualizarCLBListaCintasEliminar();
+                    CargarContenedoresEnComboBox();
+                    TBCrearContenedor.Clear();
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Error al crear el contenedor.");
+                }
+                
             }
+
+            TBCrearContenedor.Clear();
+            MessageBox.Show("El codigo del contenedor no es válido.");
+            return;
 
         }
 
@@ -68,17 +98,49 @@ namespace Gestor_de_Etiquetas
                 return;
             }
 
-            try
+            if (TBAgregarCinta.Text.StartsWith("PUE"))
             {
-                gestor.AgregarCintaAContenedor(nombreContenedorDondeSeAgregara, nombreCinta);
-               // MessageBox.Show("Cinta agregada con éxito.");
-                TBAgregarCinta.Clear();
+                if (string.IsNullOrWhiteSpace(CBListaContenedores.Text))
+                {
+                    MessageBox.Show("Por favor, seleccione un contenedor.");
+                    TBAgregarCinta.Clear();
+                    return;
+                }
 
+                if (gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text) == null)
+                {
+                    MessageBox.Show("La cinta escaneada no existe en el sistema.");
+                    TBAgregarCinta.Clear();
+                    return;
+                }
+
+
+                if (gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text).Id.ToString() == "Resguardo" || gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text).Id.ToString() == "EnUso")
+                {
+                    gestor.EliminarCinta(TBAgregarCinta.Text);
+                    gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                    ActualizarCBListaContenedoresEliminar();
+                    ActualizarCLBListaCintasEliminar();
+                    CargarContenedoresEnComboBox();
+                }
+                else
+                {
+                    var contenedor = gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text);
+                    if (contenedor != null)
+                    {
+                        MessageBox.Show("La cinta ya fue escaneada y se encuentra en el contenedor: " + contenedor.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La cinta ya fue escaneada, pero no se encontró su contenedor.");
+                    }
+                }
+
+                TBAgregarCinta.Clear();
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar cinta: {ex.Message}");
-            }
+
+            MessageBox.Show("El codigo de la cinta no es válido.");
 
         }
 
@@ -91,6 +153,162 @@ namespace Gestor_de_Etiquetas
             }
         }
 
+        private void CBListaContenedoresEliminar_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void ActualizarCBListaContenedoresEliminar()
+        {
+            CBListaContenedoresEliminar.Items.Clear();
+            foreach (var cont in gestor.ObtenerTodosLosContenedores())
+            {
+                if (cont.Id != "EnUso" && cont.Id != "Resguardo")
+                    CBListaContenedoresEliminar.Items.Add(cont.Id);
+            }
+        }
+        private void ActualizarCLBListaCintasEliminar()
+        {
+            CLBListaCintasEliminar.Items.Clear();
+
+            foreach (var cinta in gestor.ObtenerTodasLasCintas())
+            {
+                CLBListaCintasEliminar.Items.Add(cinta.Id);
+            }
+
+        }
+
+        private void btnEliminarContenedorSeleccionado_Click(object sender, EventArgs e)
+        {
+
+            // Crear mensaje de confirmación
+            string mensaje = "¿Estás seguro que deseas eliminar el siguiente contenedor? \n\n";
+            mensaje += string.Join("\n", CBListaContenedoresEliminar.Text);
+
+            DialogResult resultado = MessageBox.Show(
+                mensaje,
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                gestor.EliminarContenedor(CBListaContenedoresEliminar.Text);
+                ActualizarCBListaContenedoresEliminar();
+                ActualizarCLBListaCintasEliminar();
+                CargarContenedoresEnComboBox();
+            }
+
+        }
+
+        private void btnEliminarCintaSeleccionada_Click(object sender, EventArgs e)
+        {
+
+
+            if (CLBListaCintasEliminar.CheckedItems.Count == 0 && TBCintaEliminar.Text == "")
+            {
+                MessageBox.Show("Por favor, selecciona al menos una cinta o buscar una cinta para eliminarla.");
+                return;
+            }
+
+            if (CLBListaCintasEliminar.CheckedItems.Count > 0)
+            {
+                // Obtener las cintas seleccionadas (marcadas)
+                List<string> cintasSeleccionadas = CLBListaCintasEliminar.CheckedItems
+                    .Cast<string>()
+                    .ToList();
+
+                MessageBox.Show("Cintas seleccionadas: " + string.Join(", ", cintasSeleccionadas));
+
+                // Crear mensaje de confirmación
+                string mensaje = "¿Estás seguro que deseas eliminar las siguientes cintas?\n\n";
+                mensaje += string.Join("\n", cintasSeleccionadas);
+
+                DialogResult resultado = MessageBox.Show(
+                    mensaje,
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    int eliminadas = 0;
+
+                    foreach (string idCinta in cintasSeleccionadas)
+                    {
+                        if (gestor.EliminarCinta(idCinta))
+                            eliminadas++;
+                    }
+
+                    MessageBox.Show($"{eliminadas} cinta(s) eliminada(s) correctamente.");
+                    ActualizarCBListaContenedoresEliminar();
+                    ActualizarCLBListaCintasEliminar();
+                    CargarContenedoresEnComboBox();
+
+                }
+                return;
+            }
+
+
+
+
+
+
+        }
+
+        private void TBCintaEliminar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(TBCintaEliminar.Text))
+                {
+                    MessageBox.Show("Por favor, escanee un código.");
+                    return;
+                }
+
+                if (TBCintaEliminar.Text.Length < 8)
+                {
+                    MessageBox.Show("El código escaneado no cuenta con los caracteres suficientes");
+                    return;
+                }
+
+                if (TBCintaEliminar.Text.StartsWith("PUE"))
+                {
+
+                    string mensaje = "¿Estás seguro que deseas eliminar las siguientes cintas?\n\n";
+                    mensaje += string.Join("\n", TBCintaEliminar.Text);
+
+                    DialogResult resultado = MessageBox.Show(
+                        mensaje,
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (resultado == DialogResult.Yes)
+                    {
+
+                        gestor.EliminarCinta(TBCintaEliminar.Text);
+                        MessageBox.Show($"Cinta eliminada correctamente.");
+                        ActualizarCBListaContenedoresEliminar();
+                        ActualizarCLBListaCintasEliminar();
+                        CargarContenedoresEnComboBox();
+
+                    }
+                   
+
+                    TBCintaEliminar.Clear();
+                    return;
+                }
+
+                MessageBox.Show("El código escaneado no es válido.");
+                TBCintaEliminar.Clear();
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

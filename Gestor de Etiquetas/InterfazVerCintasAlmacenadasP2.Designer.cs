@@ -35,8 +35,8 @@
             TBCrearContenedor = new TextBox();
             DTPCrearContenedor = new DateTimePicker();
             btnEliminarContenedorSeleccionado = new Button();
-            contenedorDeListaCintasEditable = new ComboBox();
-            listaCintasEliminar = new CheckedListBox();
+            CBListaContenedoresEliminar = new ComboBox();
+            CLBListaCintasEliminar = new CheckedListBox();
             btnEliminarCintaSeleccionada = new Button();
             label1 = new Label();
             label2 = new Label();
@@ -44,7 +44,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            buscadorCintaEliminar = new TextBox();
+            TBCintaEliminar = new TextBox();
             label8 = new Label();
             label7 = new Label();
             label9 = new Label();
@@ -62,13 +62,16 @@
             // 
             // TBAgregarCinta
             // 
+            TBAgregarCinta.CharacterCasing = CharacterCasing.Upper;
             TBAgregarCinta.Location = new Point(26, 561);
+            TBAgregarCinta.MaxLength = 8;
             TBAgregarCinta.Name = "TBAgregarCinta";
             TBAgregarCinta.Size = new Size(299, 30);
             TBAgregarCinta.TabIndex = 44;
             // 
             // CBListaContenedores
             // 
+            CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
             CBListaContenedores.FormattingEnabled = true;
             CBListaContenedores.Location = new Point(25, 482);
             CBListaContenedores.Name = "CBListaContenedores";
@@ -87,6 +90,7 @@
             // 
             // TBCrearContenedor
             // 
+            TBCrearContenedor.CharacterCasing = CharacterCasing.Upper;
             TBCrearContenedor.Location = new Point(26, 243);
             TBCrearContenedor.Name = "TBCrearContenedor";
             TBCrearContenedor.Size = new Size(300, 30);
@@ -107,22 +111,26 @@
             btnEliminarContenedorSeleccionado.TabIndex = 39;
             btnEliminarContenedorSeleccionado.Text = "Eliminar Contenedor";
             btnEliminarContenedorSeleccionado.UseVisualStyleBackColor = true;
+            btnEliminarContenedorSeleccionado.Click += btnEliminarContenedorSeleccionado_Click;
             // 
-            // contenedorDeListaCintasEditable
+            // CBListaContenedoresEliminar
             // 
-            contenedorDeListaCintasEditable.FormattingEnabled = true;
-            contenedorDeListaCintasEditable.Location = new Point(665, 200);
-            contenedorDeListaCintasEditable.Name = "contenedorDeListaCintasEditable";
-            contenedorDeListaCintasEditable.Size = new Size(256, 31);
-            contenedorDeListaCintasEditable.TabIndex = 38;
+            CBListaContenedoresEliminar.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBListaContenedoresEliminar.FormattingEnabled = true;
+            CBListaContenedoresEliminar.Location = new Point(665, 200);
+            CBListaContenedoresEliminar.Name = "CBListaContenedoresEliminar";
+            CBListaContenedoresEliminar.Size = new Size(256, 31);
+            CBListaContenedoresEliminar.TabIndex = 38;
+            CBListaContenedoresEliminar.SelectedIndexChanged += CBListaContenedoresEliminar_SelectedIndexChanged;
             // 
-            // listaCintasEliminar
+            // CLBListaCintasEliminar
             // 
-            listaCintasEliminar.FormattingEnabled = true;
-            listaCintasEliminar.Location = new Point(665, 430);
-            listaCintasEliminar.Name = "listaCintasEliminar";
-            listaCintasEliminar.Size = new Size(256, 104);
-            listaCintasEliminar.TabIndex = 37;
+            CLBListaCintasEliminar.CheckOnClick = true;
+            CLBListaCintasEliminar.FormattingEnabled = true;
+            CLBListaCintasEliminar.Location = new Point(665, 430);
+            CLBListaCintasEliminar.Name = "CLBListaCintasEliminar";
+            CLBListaCintasEliminar.Size = new Size(256, 104);
+            CLBListaCintasEliminar.TabIndex = 37;
             // 
             // btnEliminarCintaSeleccionada
             // 
@@ -132,6 +140,7 @@
             btnEliminarCintaSeleccionada.TabIndex = 36;
             btnEliminarCintaSeleccionada.Text = "Eliminar Cinta";
             btnEliminarCintaSeleccionada.UseVisualStyleBackColor = true;
+            btnEliminarCintaSeleccionada.Click += btnEliminarCintaSeleccionada_Click;
             // 
             // label1
             // 
@@ -193,12 +202,15 @@
             label6.TabIndex = 51;
             label6.Text = "Seleccionar Cinta(s) a Eliminar";
             // 
-            // buscadorCintaEliminar
+            // TBCintaEliminar
             // 
-            buscadorCintaEliminar.Location = new Point(665, 576);
-            buscadorCintaEliminar.Name = "buscadorCintaEliminar";
-            buscadorCintaEliminar.Size = new Size(256, 30);
-            buscadorCintaEliminar.TabIndex = 52;
+            TBCintaEliminar.CharacterCasing = CharacterCasing.Upper;
+            TBCintaEliminar.Location = new Point(665, 576);
+            TBCintaEliminar.MaxLength = 8;
+            TBCintaEliminar.Name = "TBCintaEliminar";
+            TBCintaEliminar.Size = new Size(256, 30);
+            TBCintaEliminar.TabIndex = 52;
+            TBCintaEliminar.KeyDown += TBCintaEliminar_KeyDown;
             // 
             // label8
             // 
@@ -239,7 +251,7 @@
             Controls.Add(label9);
             Controls.Add(label7);
             Controls.Add(label8);
-            Controls.Add(buscadorCintaEliminar);
+            Controls.Add(TBCintaEliminar);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -253,8 +265,8 @@
             Controls.Add(TBCrearContenedor);
             Controls.Add(DTPCrearContenedor);
             Controls.Add(btnEliminarContenedorSeleccionado);
-            Controls.Add(contenedorDeListaCintasEditable);
-            Controls.Add(listaCintasEliminar);
+            Controls.Add(CBListaContenedoresEliminar);
+            Controls.Add(CLBListaCintasEliminar);
             Controls.Add(btnEliminarCintaSeleccionada);
             Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
@@ -273,8 +285,8 @@
         private TextBox TBCrearContenedor;
         private DateTimePicker DTPCrearContenedor;
         private Button btnEliminarContenedorSeleccionado;
-        private ComboBox contenedorDeListaCintasEditable;
-        private CheckedListBox listaCintasEliminar;
+        private ComboBox CBListaContenedoresEliminar;
+        private CheckedListBox CLBListaCintasEliminar;
         private Button btnEliminarCintaSeleccionada;
         private Label label1;
         private Label label2;
@@ -282,7 +294,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox buscadorCintaEliminar;
+        private TextBox TBCintaEliminar;
         private Label label8;
         private Label label7;
         private Label label9;

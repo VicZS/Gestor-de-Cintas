@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             label1 = new Label();
             BarraMenu = new Panel();
-            panel4 = new Panel();
+            panel1 = new Panel();
             panel3 = new Panel();
+            panel4 = new Panel();
+            btnAbrirMenuReportes = new Button();
             btnEditarCintasAlmacenadas = new Button();
             panel2 = new Panel();
             btnVerCintasAlmacenadas = new Button();
-            panel1 = new Panel();
             btnImprimirEtiquetas = new Button();
             btnAlmacenarCintas = new Button();
             label5 = new Label();
@@ -62,12 +63,13 @@
             // BarraMenu
             // 
             BarraMenu.BackColor = Color.FromArgb(77, 105, 129);
-            BarraMenu.Controls.Add(panel4);
+            BarraMenu.Controls.Add(panel1);
             BarraMenu.Controls.Add(panel3);
+            BarraMenu.Controls.Add(panel4);
+            BarraMenu.Controls.Add(btnAbrirMenuReportes);
             BarraMenu.Controls.Add(btnEditarCintasAlmacenadas);
             BarraMenu.Controls.Add(panel2);
             BarraMenu.Controls.Add(btnVerCintasAlmacenadas);
-            BarraMenu.Controls.Add(panel1);
             BarraMenu.Controls.Add(btnImprimirEtiquetas);
             BarraMenu.Controls.Add(btnAlmacenarCintas);
             BarraMenu.Controls.Add(label5);
@@ -78,13 +80,13 @@
             BarraMenu.Size = new Size(288, 678);
             BarraMenu.TabIndex = 9;
             // 
-            // panel4
+            // panel1
             // 
-            panel4.BackColor = Color.FromArgb(14, 63, 96);
-            panel4.Location = new Point(134, 93);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(12, 195);
-            panel4.TabIndex = 10;
+            panel1.BackColor = Color.FromArgb(14, 63, 96);
+            panel1.Location = new Point(0, 478);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(291, 10);
+            panel1.TabIndex = 9;
             // 
             // panel3
             // 
@@ -93,6 +95,30 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(291, 10);
             panel3.TabIndex = 11;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(14, 63, 96);
+            panel4.Location = new Point(134, 93);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(10, 386);
+            panel4.TabIndex = 10;
+            // 
+            // btnAbrirMenuReportes
+            // 
+            btnAbrirMenuReportes.FlatAppearance.BorderSize = 0;
+            btnAbrirMenuReportes.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
+            btnAbrirMenuReportes.FlatStyle = FlatStyle.Flat;
+            btnAbrirMenuReportes.ForeColor = SystemColors.Control;
+            btnAbrirMenuReportes.Image = (Image)resources.GetObject("btnAbrirMenuReportes.Image");
+            btnAbrirMenuReportes.Location = new Point(139, 289);
+            btnAbrirMenuReportes.Name = "btnAbrirMenuReportes";
+            btnAbrirMenuReportes.Size = new Size(152, 191);
+            btnAbrirMenuReportes.TabIndex = 12;
+            btnAbrirMenuReportes.Text = "Generar Reporte";
+            btnAbrirMenuReportes.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnAbrirMenuReportes.UseVisualStyleBackColor = true;
+            btnAbrirMenuReportes.Click += btnAbrirMenuReportes_Click;
             // 
             // btnEditarCintasAlmacenadas
             // 
@@ -135,14 +161,6 @@
             btnVerCintasAlmacenadas.UseVisualStyleBackColor = true;
             btnVerCintasAlmacenadas.Click += btnVerCintasAlmacenadas_Click;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(14, 63, 96);
-            panel1.Location = new Point(0, 478);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(291, 10);
-            panel1.TabIndex = 9;
-            // 
             // btnImprimirEtiquetas
             // 
             btnImprimirEtiquetas.FlatAppearance.BorderSize = 0;
@@ -169,10 +187,10 @@
             btnAlmacenarCintas.Image = Properties.Resources.delivery;
             btnAlmacenarCintas.Location = new Point(-3, 289);
             btnAlmacenarCintas.Name = "btnAlmacenarCintas";
-            btnAlmacenarCintas.Size = new Size(291, 195);
+            btnAlmacenarCintas.Size = new Size(144, 195);
             btnAlmacenarCintas.TabIndex = 7;
             btnAlmacenarCintas.Text = "Almacenar Cintas";
-            btnAlmacenarCintas.TextAlign = ContentAlignment.BottomCenter;
+            btnAlmacenarCintas.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAlmacenarCintas.UseVisualStyleBackColor = true;
             btnAlmacenarCintas.Click += btnAlmacenarCintas_Click;
             // 
@@ -261,5 +279,6 @@
         private PictureBox pictureBox2;
         private Button btnEditarCintasAlmacenadas;
         private Panel panel4;
+        private Button btnAbrirMenuReportes;
     }
 }
