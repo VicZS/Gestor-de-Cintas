@@ -109,19 +109,19 @@ namespace Gestor_de_Etiquetas
 
                 if (gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text) == null)
                 {
+                    if(nombreContenedorDondeSeAgregara == "Resguardo" || nombreContenedorDondeSeAgregara == "EnUso")
+                    {
+                        gestor.EliminarCinta(TBAgregarCinta.Text);
+                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                        ActualizarCBListaContenedoresEliminar();
+                        ActualizarCLBListaCintasEliminar();
+                        CargarContenedoresEnComboBox();
+                        TBAgregarCinta.Clear();
+                        return;
+                    }
                     MessageBox.Show("La cinta escaneada no existe en el sistema.");
                     TBAgregarCinta.Clear();
                     return;
-                }
-
-
-                if (gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text).Id.ToString() == "Resguardo" || gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text).Id.ToString() == "EnUso")
-                {
-                    gestor.EliminarCinta(TBAgregarCinta.Text);
-                    gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
-                    ActualizarCBListaContenedoresEliminar();
-                    ActualizarCLBListaCintasEliminar();
-                    CargarContenedoresEnComboBox();
                 }
                 else
                 {

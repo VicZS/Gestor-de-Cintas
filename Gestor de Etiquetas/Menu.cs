@@ -79,5 +79,10 @@ namespace Gestor_de_Etiquetas
         {
             abrirInterface(new InterfazGenerarReporte());
         }
+
+        private void PBAjustes_Click(object sender, EventArgs e)
+        {
+            abrirInterface(new InterfazAjustes());
+        }
     }
 }

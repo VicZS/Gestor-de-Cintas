@@ -44,10 +44,12 @@
             pictureBox1 = new PictureBox();
             BarraContenido = new Panel();
             pictureBox2 = new PictureBox();
+            PBAjustes = new PictureBox();
             BarraMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             BarraContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PBAjustes).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -63,6 +65,7 @@
             // BarraMenu
             // 
             BarraMenu.BackColor = Color.FromArgb(77, 105, 129);
+            BarraMenu.Controls.Add(PBAjustes);
             BarraMenu.Controls.Add(panel1);
             BarraMenu.Controls.Add(panel3);
             BarraMenu.Controls.Add(panel4);
@@ -83,7 +86,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(14, 63, 96);
-            panel1.Location = new Point(0, 478);
+            panel1.Location = new Point(0, 501);
             panel1.Name = "panel1";
             panel1.Size = new Size(291, 10);
             panel1.TabIndex = 9;
@@ -91,7 +94,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(14, 63, 96);
-            panel3.Location = new Point(-4, 285);
+            panel3.Location = new Point(-4, 302);
             panel3.Name = "panel3";
             panel3.Size = new Size(291, 10);
             panel3.TabIndex = 11;
@@ -99,9 +102,9 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(14, 63, 96);
-            panel4.Location = new Point(134, 93);
+            panel4.Location = new Point(134, 106);
             panel4.Name = "panel4";
-            panel4.Size = new Size(10, 386);
+            panel4.Size = new Size(10, 399);
             panel4.TabIndex = 10;
             // 
             // btnAbrirMenuReportes
@@ -111,9 +114,9 @@
             btnAbrirMenuReportes.FlatStyle = FlatStyle.Flat;
             btnAbrirMenuReportes.ForeColor = SystemColors.Control;
             btnAbrirMenuReportes.Image = (Image)resources.GetObject("btnAbrirMenuReportes.Image");
-            btnAbrirMenuReportes.Location = new Point(139, 289);
+            btnAbrirMenuReportes.Location = new Point(139, 313);
             btnAbrirMenuReportes.Name = "btnAbrirMenuReportes";
-            btnAbrirMenuReportes.Size = new Size(152, 191);
+            btnAbrirMenuReportes.Size = new Size(152, 188);
             btnAbrirMenuReportes.TabIndex = 12;
             btnAbrirMenuReportes.Text = "Generar Reporte";
             btnAbrirMenuReportes.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -127,7 +130,7 @@
             btnEditarCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
             btnEditarCintasAlmacenadas.ForeColor = SystemColors.Control;
             btnEditarCintasAlmacenadas.Image = Properties.Resources.almacen;
-            btnEditarCintasAlmacenadas.Location = new Point(135, 101);
+            btnEditarCintasAlmacenadas.Location = new Point(135, 111);
             btnEditarCintasAlmacenadas.Name = "btnEditarCintasAlmacenadas";
             btnEditarCintasAlmacenadas.Size = new Size(152, 191);
             btnEditarCintasAlmacenadas.TabIndex = 0;
@@ -139,7 +142,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(14, 63, 96);
-            panel2.Location = new Point(0, 92);
+            panel2.Location = new Point(0, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(291, 10);
             panel2.TabIndex = 10;
@@ -151,7 +154,7 @@
             btnVerCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
             btnVerCintasAlmacenadas.ForeColor = SystemColors.ButtonFace;
             btnVerCintasAlmacenadas.Image = Properties.Resources.almacen;
-            btnVerCintasAlmacenadas.Location = new Point(-6, 97);
+            btnVerCintasAlmacenadas.Location = new Point(-6, 108);
             btnVerCintasAlmacenadas.Name = "btnVerCintasAlmacenadas";
             btnVerCintasAlmacenadas.Size = new Size(147, 195);
             btnVerCintasAlmacenadas.TabIndex = 6;
@@ -168,9 +171,9 @@
             btnImprimirEtiquetas.FlatStyle = FlatStyle.Flat;
             btnImprimirEtiquetas.ForeColor = SystemColors.ButtonFace;
             btnImprimirEtiquetas.Image = Properties.Resources.etiqueta;
-            btnImprimirEtiquetas.Location = new Point(-2, 483);
+            btnImprimirEtiquetas.Location = new Point(-2, 512);
             btnImprimirEtiquetas.Name = "btnImprimirEtiquetas";
-            btnImprimirEtiquetas.Size = new Size(291, 195);
+            btnImprimirEtiquetas.Size = new Size(293, 166);
             btnImprimirEtiquetas.TabIndex = 8;
             btnImprimirEtiquetas.Text = "Imprimir Etiquetas";
             btnImprimirEtiquetas.TextAlign = ContentAlignment.BottomCenter;
@@ -185,9 +188,9 @@
             btnAlmacenarCintas.FlatStyle = FlatStyle.Flat;
             btnAlmacenarCintas.ForeColor = SystemColors.ButtonFace;
             btnAlmacenarCintas.Image = Properties.Resources.delivery;
-            btnAlmacenarCintas.Location = new Point(-3, 289);
+            btnAlmacenarCintas.Location = new Point(-3, 313);
             btnAlmacenarCintas.Name = "btnAlmacenarCintas";
-            btnAlmacenarCintas.Size = new Size(144, 195);
+            btnAlmacenarCintas.Size = new Size(144, 188);
             btnAlmacenarCintas.TabIndex = 7;
             btnAlmacenarCintas.Text = "Almacenar Cintas";
             btnAlmacenarCintas.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -199,7 +202,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(78, 51);
+            label5.Location = new Point(81, 62);
             label5.Name = "label5";
             label5.Size = new Size(210, 35);
             label5.TabIndex = 5;
@@ -211,7 +214,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(83, 86);
+            pictureBox1.Size = new Size(85, 94);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -236,6 +239,17 @@
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
+            // PBAjustes
+            // 
+            PBAjustes.Image = (Image)resources.GetObject("PBAjustes.Image");
+            PBAjustes.Location = new Point(219, 0);
+            PBAjustes.Name = "PBAjustes";
+            PBAjustes.Size = new Size(69, 67);
+            PBAjustes.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBAjustes.TabIndex = 13;
+            PBAjustes.TabStop = false;
+            PBAjustes.Click += PBAjustes_Click;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(12F, 26F);
@@ -258,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             BarraContenido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PBAjustes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -280,5 +295,6 @@
         private Button btnEditarCintasAlmacenadas;
         private Panel panel4;
         private Button btnAbrirMenuReportes;
+        private PictureBox PBAjustes;
     }
 }
