@@ -24,6 +24,18 @@ namespace Gestor_de_Etiquetas
         }
     }
 
+    public class Ajustes
+    {
+        public string NombreImpresora { get; set; }
+        public int NumeroCopias { get; set; }
+
+        public Ajustes()
+        {
+            NombreImpresora = "ZDesigner ZT411-203dpi ZPL";
+            NumeroCopias = 3;
+        }
+    }
+
     public class Contenedor
     {
         public string Id { get; set; } // Puede ser null o un valor por defecto
@@ -43,6 +55,7 @@ namespace Gestor_de_Etiquetas
     public class GestorAlmacen
     {
         private const string RutaBD = "BDCintas.json";
+
         private List<Contenedor> contenedores;
 
         public GestorAlmacen()
@@ -436,4 +449,60 @@ namespace Gestor_de_Etiquetas
         }
 
     }
+
+    public class GestorAjustes
+    {
+        private const string RutaAjustes = "Ajustes.json";
+
+        // Carga los ajustes desde el archivo, o crea valores por defecto si no existe
+        private static Ajustes CargarDesdeArchivo()
+        {
+            if (!File.Exists(RutaAjustes))
+            {
+                var ajustesPorDefecto = new Ajustes();
+                GuardarEnArchivo(ajustesPorDefecto);
+                return ajustesPorDefecto;
+            }
+
+            string json = File.ReadAllText(RutaAjustes);
+            return JsonSerializer.Deserialize<Ajustes>(json);
+        }
+
+        // Guarda los ajustes en el archivo
+        private static void GuardarEnArchivo(Ajustes ajustes)
+        {
+            string json = JsonSerializer.Serialize(ajustes, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(RutaAjustes, json);
+        }
+
+        // Obtener nombre de impresora
+        public static string ObtenerNombreImpresora()
+        {
+            return CargarDesdeArchivo().NombreImpresora;
+        }
+
+        // Cambiar nombre de impresora
+        public static void CambiarNombreImpresora(string nuevoNombre)
+        {
+            var ajustes = CargarDesdeArchivo();
+            ajustes.NombreImpresora = nuevoNombre;
+            GuardarEnArchivo(ajustes);
+        }
+
+        // Obtener número de copias
+        public static int ObtenerNumeroCopias()
+        {
+            return CargarDesdeArchivo().NumeroCopias;
+        }
+
+        // Cambiar número de copias
+        public static void CambiarNumeroCopias(int nuevoNumero)
+        {
+            var ajustes = CargarDesdeArchivo();
+            ajustes.NumeroCopias = nuevoNumero;
+            GuardarEnArchivo(ajustes);
+        }
+
+    }
+
 }

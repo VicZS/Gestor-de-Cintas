@@ -20,6 +20,7 @@ namespace Gestor_de_Etiquetas
     public partial class InterfazImprimirEtiquetas : Form
     {
         GestorAlmacen gestor = new GestorAlmacen();
+
         string ContenedorResguardo = "Resguardo";
         string ContenedorEnUso = "EnUso";
         public InterfazImprimirEtiquetas()
@@ -79,14 +80,16 @@ namespace Gestor_de_Etiquetas
 
         private void imprimir(string contenidoEtiqueta)
         {
-            string printerName = "ZDesigner ZT411-203dpi ZPL"; // Cambia esto por el nombre de tu impresora
+            
+            string printerName = GestorAjustes.ObtenerNombreImpresora(); // Cambia esto por el nombre de tu impresora  ---- >Designer ZT411-203dpi ZPL
+            string numCopias = GestorAjustes.ObtenerNumeroCopias().ToString();
             string zpl = $@"
         ^XA
         ^LL152
         ^PW609
         ^FO80,15^B3N,N,70,N^FD{contenidoEtiqueta}^FS
         ^FO250,90^A0N,30,40^FD{contenidoEtiqueta}^FS
-        ^PQ2
+        ^PQ{numCopias}
         ^XZ";
 
             // ^XA: Inicia el comando ZPL.
@@ -101,6 +104,8 @@ namespace Gestor_de_Etiquetas
 
 
             //MessageBox.Show(zpl);
+
+           
 
             bool success = ZebraPrinter.SendZplToPrinter(printerName, zpl);
             if (success)

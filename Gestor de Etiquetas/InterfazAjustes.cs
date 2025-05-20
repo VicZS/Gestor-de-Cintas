@@ -12,9 +12,13 @@ namespace Gestor_de_Etiquetas
 {
     public partial class InterfazAjustes : Form
     {
+
+
+
         public InterfazAjustes()
         {
             InitializeComponent();
+            ActualizarPantalla();
         }
 
         private void btnCrearBackup_Click(object sender, EventArgs e)
@@ -91,10 +95,41 @@ namespace Gestor_de_Etiquetas
             openFileDialog1.Filter = "Archivos JSON (*.json)|*.json";
             openFileDialog1.Title = "Selecciona un archivo de backup";
 
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 LSeleccionaArchivo.Text = openFileDialog1.FileName;
             }
+        }
+
+        private void ActualizarPantalla()
+        {
+            NUDNumCopias.Value = GestorAjustes.ObtenerNumeroCopias();
+            LNombreImpresoraActual.Text = GestorAjustes.ObtenerNombreImpresora();
+        }
+
+        private void btnCambiarNumCopias_Click(object sender, EventArgs e)
+        {
+            GestorAjustes.CambiarNumeroCopias((int)NUDNumCopias.Value);
+
+            MessageBox.Show("El número de copias a cambiado exitosamente.");
+
+            ActualizarPantalla();
+        }
+
+        private void btnCambiarNomImpresora_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TBNuevoNombreImpresora.Text))
+            {
+                MessageBox.Show("Por favor, introduce un nombre válido para la impresora.");
+                return;
+            }
+            else
+            {
+                GestorAjustes.CambiarNombreImpresora(TBNuevoNombreImpresora.Text);
+                MessageBox.Show("El nombre de la impresora ha cambiado exitosamente.");
+                ActualizarPantalla();
+            }
+
         }
     }
 }

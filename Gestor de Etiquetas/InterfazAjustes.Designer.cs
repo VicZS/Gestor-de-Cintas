@@ -35,13 +35,13 @@
             btnCrearBackup = new Button();
             btnCargarBackup = new Button();
             LNombreImpresoraActual = new Label();
-            numericUpDown1 = new NumericUpDown();
+            NUDNumCopias = new NumericUpDown();
             btnCambiarNumCopias = new Button();
-            textBox1 = new TextBox();
+            TBNuevoNombreImpresora = new TextBox();
             btnCambiarNomImpresora = new Button();
             LSeleccionaArchivo = new Label();
             openFileDialog1 = new OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NUDNumCopias).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -113,15 +113,15 @@
             LNombreImpresoraActual.TabIndex = 6;
             LNombreImpresoraActual.Text = "Nombre Impresora";
             // 
-            // numericUpDown1
+            // NUDNumCopias
             // 
-            numericUpDown1.Location = new Point(658, 401);
-            numericUpDown1.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(56, 53);
-            numericUpDown1.TabIndex = 7;
-            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            NUDNumCopias.Location = new Point(658, 401);
+            NUDNumCopias.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            NUDNumCopias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            NUDNumCopias.Name = "NUDNumCopias";
+            NUDNumCopias.Size = new Size(56, 53);
+            NUDNumCopias.TabIndex = 7;
+            NUDNumCopias.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnCambiarNumCopias
             // 
@@ -131,14 +131,15 @@
             btnCambiarNumCopias.TabIndex = 8;
             btnCambiarNumCopias.Text = "Aceptar";
             btnCambiarNumCopias.UseVisualStyleBackColor = true;
+            btnCambiarNumCopias.Click += btnCambiarNumCopias_Click;
             // 
-            // textBox1
+            // TBNuevoNombreImpresora
             // 
-            textBox1.Font = new Font("Sans Serif Collection", 9.749998F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(63, 405);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(224, 42);
-            textBox1.TabIndex = 9;
+            TBNuevoNombreImpresora.Font = new Font("Sans Serif Collection", 9.749998F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBNuevoNombreImpresora.Location = new Point(63, 405);
+            TBNuevoNombreImpresora.Name = "TBNuevoNombreImpresora";
+            TBNuevoNombreImpresora.Size = new Size(224, 42);
+            TBNuevoNombreImpresora.TabIndex = 9;
             // 
             // btnCambiarNomImpresora
             // 
@@ -148,6 +149,7 @@
             btnCambiarNomImpresora.TabIndex = 10;
             btnCambiarNomImpresora.Text = "Cambiar";
             btnCambiarNomImpresora.UseVisualStyleBackColor = true;
+            btnCambiarNomImpresora.Click += btnCambiarNomImpresora_Click;
             // 
             // LSeleccionaArchivo
             // 
@@ -171,9 +173,9 @@
             ClientSize = new Size(960, 636);
             Controls.Add(LSeleccionaArchivo);
             Controls.Add(btnCambiarNomImpresora);
-            Controls.Add(textBox1);
+            Controls.Add(TBNuevoNombreImpresora);
             Controls.Add(btnCambiarNumCopias);
-            Controls.Add(numericUpDown1);
+            Controls.Add(NUDNumCopias);
             Controls.Add(LNombreImpresoraActual);
             Controls.Add(btnCargarBackup);
             Controls.Add(btnCrearBackup);
@@ -186,7 +188,7 @@
             Margin = new Padding(3, 8, 3, 8);
             Name = "InterfazAjustes";
             Text = "InterfazAjustes";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NUDNumCopias).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -200,9 +202,9 @@
         private Button btnCrearBackup;
         private Button btnCargarBackup;
         private Label LNombreImpresoraActual;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown NUDNumCopias;
         private Button btnCambiarNumCopias;
-        private TextBox textBox1;
+        private TextBox TBNuevoNombreImpresora;
         private Button btnCambiarNomImpresora;
         private Label LSeleccionaArchivo;
         private OpenFileDialog openFileDialog1;

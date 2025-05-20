@@ -5,6 +5,8 @@ namespace Gestor_de_Etiquetas
     public partial class Menu : Form
     {
         GestorAlmacen gestor = new GestorAlmacen();
+        GestorAjustes gestorAjustes = new GestorAjustes();
+
         string ContenedorResguardo = "Resguardo";
         string ContenedorEnUso = "EnUso";
         public Menu()
