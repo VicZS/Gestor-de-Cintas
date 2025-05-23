@@ -31,25 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             label1 = new Label();
             BarraMenu = new Panel();
+            panel4 = new Panel();
+            panel2 = new Panel();
+            PBAjustes = new PictureBox();
             panel1 = new Panel();
             panel3 = new Panel();
-            panel4 = new Panel();
             btnAbrirMenuReportes = new Button();
             btnEditarCintasAlmacenadas = new Button();
-            panel2 = new Panel();
             btnVerCintasAlmacenadas = new Button();
             btnImprimirEtiquetas = new Button();
             btnAlmacenarCintas = new Button();
             label5 = new Label();
             pictureBox1 = new PictureBox();
             BarraContenido = new Panel();
-            pictureBox2 = new PictureBox();
-            PBAjustes = new PictureBox();
             BarraMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            BarraContenido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PBAjustes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -65,13 +62,13 @@
             // BarraMenu
             // 
             BarraMenu.BackColor = Color.FromArgb(77, 105, 129);
+            BarraMenu.Controls.Add(panel4);
+            BarraMenu.Controls.Add(panel2);
             BarraMenu.Controls.Add(PBAjustes);
             BarraMenu.Controls.Add(panel1);
             BarraMenu.Controls.Add(panel3);
-            BarraMenu.Controls.Add(panel4);
             BarraMenu.Controls.Add(btnAbrirMenuReportes);
             BarraMenu.Controls.Add(btnEditarCintasAlmacenadas);
-            BarraMenu.Controls.Add(panel2);
             BarraMenu.Controls.Add(btnVerCintasAlmacenadas);
             BarraMenu.Controls.Add(btnImprimirEtiquetas);
             BarraMenu.Controls.Add(btnAlmacenarCintas);
@@ -82,6 +79,33 @@
             BarraMenu.Name = "BarraMenu";
             BarraMenu.Size = new Size(288, 678);
             BarraMenu.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(14, 63, 96);
+            panel4.Location = new Point(138, 106);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(10, 399);
+            panel4.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(14, 63, 96);
+            panel2.Location = new Point(0, 100);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(291, 10);
+            panel2.TabIndex = 10;
+            // 
+            // PBAjustes
+            // 
+            PBAjustes.Image = (Image)resources.GetObject("PBAjustes.Image");
+            PBAjustes.Location = new Point(217, 0);
+            PBAjustes.Name = "PBAjustes";
+            PBAjustes.Size = new Size(70, 70);
+            PBAjustes.SizeMode = PictureBoxSizeMode.StretchImage;
+            PBAjustes.TabIndex = 13;
+            PBAjustes.TabStop = false;
+            PBAjustes.Click += PBAjustes_Click;
             // 
             // panel1
             // 
@@ -99,24 +123,17 @@
             panel3.Size = new Size(291, 10);
             panel3.TabIndex = 11;
             // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(14, 63, 96);
-            panel4.Location = new Point(134, 106);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(10, 399);
-            panel4.TabIndex = 10;
-            // 
             // btnAbrirMenuReportes
             // 
             btnAbrirMenuReportes.FlatAppearance.BorderSize = 0;
             btnAbrirMenuReportes.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
             btnAbrirMenuReportes.FlatStyle = FlatStyle.Flat;
+            btnAbrirMenuReportes.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
             btnAbrirMenuReportes.ForeColor = SystemColors.Control;
             btnAbrirMenuReportes.Image = (Image)resources.GetObject("btnAbrirMenuReportes.Image");
-            btnAbrirMenuReportes.Location = new Point(139, 313);
+            btnAbrirMenuReportes.Location = new Point(140, 308);
             btnAbrirMenuReportes.Name = "btnAbrirMenuReportes";
-            btnAbrirMenuReportes.Size = new Size(152, 188);
+            btnAbrirMenuReportes.Size = new Size(145, 200);
             btnAbrirMenuReportes.TabIndex = 12;
             btnAbrirMenuReportes.Text = "Generar Reporte";
             btnAbrirMenuReportes.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -128,37 +145,34 @@
             btnEditarCintasAlmacenadas.FlatAppearance.BorderSize = 0;
             btnEditarCintasAlmacenadas.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
             btnEditarCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
+            btnEditarCintasAlmacenadas.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
             btnEditarCintasAlmacenadas.ForeColor = SystemColors.Control;
             btnEditarCintasAlmacenadas.Image = Properties.Resources.almacen;
-            btnEditarCintasAlmacenadas.Location = new Point(135, 111);
+            btnEditarCintasAlmacenadas.Location = new Point(145, 105);
             btnEditarCintasAlmacenadas.Name = "btnEditarCintasAlmacenadas";
-            btnEditarCintasAlmacenadas.Size = new Size(152, 191);
-            btnEditarCintasAlmacenadas.TabIndex = 0;
+            btnEditarCintasAlmacenadas.Size = new Size(145, 200);
+            btnEditarCintasAlmacenadas.TabIndex = 8;
             btnEditarCintasAlmacenadas.Text = "Editar Cintas Almacenadas";
             btnEditarCintasAlmacenadas.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditarCintasAlmacenadas.UseVisualStyleBackColor = true;
             btnEditarCintasAlmacenadas.Click += btnEditarCintasAlmacenadas_Click;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(14, 63, 96);
-            panel2.Location = new Point(0, 100);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(291, 10);
-            panel2.TabIndex = 10;
             // 
             // btnVerCintasAlmacenadas
             // 
             btnVerCintasAlmacenadas.FlatAppearance.BorderSize = 0;
             btnVerCintasAlmacenadas.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
             btnVerCintasAlmacenadas.FlatStyle = FlatStyle.Flat;
-            btnVerCintasAlmacenadas.ForeColor = SystemColors.ButtonFace;
+            btnVerCintasAlmacenadas.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVerCintasAlmacenadas.ForeColor = SystemColors.Control;
             btnVerCintasAlmacenadas.Image = Properties.Resources.almacen;
-            btnVerCintasAlmacenadas.Location = new Point(-6, 108);
+            btnVerCintasAlmacenadas.ImageAlign = ContentAlignment.TopCenter;
+            btnVerCintasAlmacenadas.Location = new Point(-4, 108);
+            btnVerCintasAlmacenadas.Margin = new Padding(0);
             btnVerCintasAlmacenadas.Name = "btnVerCintasAlmacenadas";
-            btnVerCintasAlmacenadas.Size = new Size(147, 195);
-            btnVerCintasAlmacenadas.TabIndex = 6;
-            btnVerCintasAlmacenadas.Text = "Ver Cintas Almacenadas";
+            btnVerCintasAlmacenadas.RightToLeft = RightToLeft.No;
+            btnVerCintasAlmacenadas.Size = new Size(145, 200);
+            btnVerCintasAlmacenadas.TabIndex = 8;
+            btnVerCintasAlmacenadas.Text = "Ver Cintas \nAlmacenadas";
             btnVerCintasAlmacenadas.TextAlign = ContentAlignment.BottomCenter;
             btnVerCintasAlmacenadas.TextImageRelation = TextImageRelation.ImageAboveText;
             btnVerCintasAlmacenadas.UseVisualStyleBackColor = true;
@@ -169,11 +183,12 @@
             btnImprimirEtiquetas.FlatAppearance.BorderSize = 0;
             btnImprimirEtiquetas.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
             btnImprimirEtiquetas.FlatStyle = FlatStyle.Flat;
+            btnImprimirEtiquetas.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
             btnImprimirEtiquetas.ForeColor = SystemColors.ButtonFace;
             btnImprimirEtiquetas.Image = Properties.Resources.etiqueta;
-            btnImprimirEtiquetas.Location = new Point(-2, 512);
+            btnImprimirEtiquetas.Location = new Point(0, 506);
             btnImprimirEtiquetas.Name = "btnImprimirEtiquetas";
-            btnImprimirEtiquetas.Size = new Size(293, 166);
+            btnImprimirEtiquetas.Size = new Size(288, 174);
             btnImprimirEtiquetas.TabIndex = 8;
             btnImprimirEtiquetas.Text = "Imprimir Etiquetas";
             btnImprimirEtiquetas.TextAlign = ContentAlignment.BottomCenter;
@@ -186,11 +201,12 @@
             btnAlmacenarCintas.FlatAppearance.BorderSize = 0;
             btnAlmacenarCintas.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 63, 96);
             btnAlmacenarCintas.FlatStyle = FlatStyle.Flat;
+            btnAlmacenarCintas.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
             btnAlmacenarCintas.ForeColor = SystemColors.ButtonFace;
             btnAlmacenarCintas.Image = Properties.Resources.delivery;
-            btnAlmacenarCintas.Location = new Point(-3, 313);
+            btnAlmacenarCintas.Location = new Point(-1, 307);
             btnAlmacenarCintas.Name = "btnAlmacenarCintas";
-            btnAlmacenarCintas.Size = new Size(144, 188);
+            btnAlmacenarCintas.Size = new Size(145, 200);
             btnAlmacenarCintas.TabIndex = 7;
             btnAlmacenarCintas.Text = "Almacenar Cintas";
             btnAlmacenarCintas.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -200,11 +216,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(81, 62);
+            label5.Location = new Point(87, 65);
             label5.Name = "label5";
-            label5.Size = new Size(210, 35);
+            label5.Size = new Size(201, 32);
             label5.TabIndex = 5;
             label5.Text = "Gestor de Cintas";
             label5.Click += label5_Click;
@@ -214,7 +230,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(85, 94);
+            pictureBox1.Size = new Size(85, 105);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -222,33 +238,12 @@
             // 
             // BarraContenido
             // 
-            BarraContenido.BackColor = Color.FromArgb(164, 182, 196);
-            BarraContenido.Controls.Add(pictureBox2);
+            BarraContenido.BackColor = Color.FromArgb(216, 223, 231);
             BarraContenido.Dock = DockStyle.Fill;
             BarraContenido.Location = new Point(288, 0);
             BarraContenido.Name = "BarraContenido";
             BarraContenido.Size = new Size(976, 678);
             BarraContenido.TabIndex = 10;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(255, 57);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(533, 524);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
-            // PBAjustes
-            // 
-            PBAjustes.Image = (Image)resources.GetObject("PBAjustes.Image");
-            PBAjustes.Location = new Point(219, 0);
-            PBAjustes.Name = "PBAjustes";
-            PBAjustes.Size = new Size(69, 67);
-            PBAjustes.SizeMode = PictureBoxSizeMode.StretchImage;
-            PBAjustes.TabIndex = 13;
-            PBAjustes.TabStop = false;
-            PBAjustes.Click += PBAjustes_Click;
             // 
             // Menu
             // 
@@ -266,13 +261,11 @@
             MaximizeBox = false;
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestor de Cintas";
+            Text = "Administrador de Cintas";
             BarraMenu.ResumeLayout(false);
             BarraMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            BarraContenido.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)PBAjustes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -291,7 +284,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private PictureBox pictureBox2;
         private Button btnEditarCintasAlmacenadas;
         private Panel panel4;
         private Button btnAbrirMenuReportes;

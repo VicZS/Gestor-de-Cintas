@@ -344,5 +344,10 @@ namespace Gestor_de_Etiquetas
         {
 
         }
+
+        private void CLBCintasEnUso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -100,7 +100,9 @@ namespace Gestor_de_Etiquetas
 
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

@@ -50,37 +50,38 @@
             // codigoEscaneado
             // 
             codigoEscaneado.CharacterCasing = CharacterCasing.Upper;
-            codigoEscaneado.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            codigoEscaneado.Font = new Font("Segoe UI", 20.25F);
             codigoEscaneado.Location = new Point(492, 164);
             codigoEscaneado.MaxLength = 20;
             codigoEscaneado.Name = "codigoEscaneado";
-            codigoEscaneado.Size = new Size(461, 56);
+            codigoEscaneado.Size = new Size(461, 43);
             codigoEscaneado.TabIndex = 1;
             codigoEscaneado.KeyDown += codigoEscaneado_KeyDown;
             // 
             // LContenedor
             // 
             LContenedor.AutoSize = true;
-            LContenedor.Font = new Font("Microsoft Sans Serif", 18.75F, FontStyle.Italic);
-            LContenedor.Location = new Point(562, 253);
+            LContenedor.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LContenedor.Location = new Point(492, 246);
             LContenedor.Name = "LContenedor";
-            LContenedor.Size = new Size(313, 29);
+            LContenedor.Size = new Size(271, 30);
             LContenedor.TabIndex = 2;
             LContenedor.Text = "Contenedor: T##########";
             // 
             // CLBListaCintas
             // 
             CLBListaCintas.CheckOnClick = true;
-            CLBListaCintas.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CLBListaCintas.Font = new Font("Segoe UI", 12.75F);
             CLBListaCintas.FormattingEnabled = true;
             CLBListaCintas.Location = new Point(492, 350);
             CLBListaCintas.Name = "CLBListaCintas";
-            CLBListaCintas.Size = new Size(472, 236);
+            CLBListaCintas.Size = new Size(472, 229);
             CLBListaCintas.TabIndex = 4;
             CLBListaCintas.SelectedIndexChanged += CLBListaCintas_SelectedIndexChanged;
             // 
             // btnEliminarCita
             // 
+            btnEliminarCita.Font = new Font("Segoe UI", 12.75F);
             btnEliminarCita.Location = new Point(640, 610);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(165, 56);
@@ -92,11 +93,11 @@
             // CBListaContenedores
             // 
             CBListaContenedores.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBListaContenedores.Font = new Font("Comic Sans MS", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CBListaContenedores.Font = new Font("Segoe UI", 15.75F);
             CBListaContenedores.FormattingEnabled = true;
             CBListaContenedores.Location = new Point(492, 303);
             CBListaContenedores.Name = "CBListaContenedores";
-            CBListaContenedores.Size = new Size(472, 41);
+            CBListaContenedores.Size = new Size(472, 38);
             CBListaContenedores.TabIndex = 6;
             CBListaContenedores.SelectedIndexChanged += CBListaContenedores_SelectedIndexChanged;
             // 
@@ -111,12 +112,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(592, 51);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label1.Location = new Point(587, 36);
             label1.Name = "label1";
-            label1.Size = new Size(372, 29);
+            label1.Size = new Size(246, 30);
             label1.TabIndex = 8;
-            label1.Text = "Escanea Aqui para Almacenar Cintas ";
+            label1.Text = "Escanea Aqui las Cintas ";
             // 
             // pictureBox1
             // 
@@ -132,20 +133,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(592, 80);
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label2.Location = new Point(587, 66);
             label2.Name = "label2";
-            label2.Size = new Size(140, 29);
+            label2.Size = new Size(144, 30);
             label2.TabIndex = 10;
             label2.Text = "para su Envio";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Comic Sans MS", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             label3.Location = new Point(88, 55);
             label3.Name = "label3";
-            label3.Size = new Size(380, 29);
+            label3.Size = new Size(379, 30);
             label3.TabIndex = 11;
             label3.Text = "Escanea Aqui para Resguardar Cintas ";
             // 
@@ -163,11 +164,11 @@
             // TBResguardarCinta
             // 
             TBResguardarCinta.CharacterCasing = CharacterCasing.Upper;
-            TBResguardarCinta.Font = new Font("Comic Sans MS", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TBResguardarCinta.Font = new Font("Segoe UI", 20.25F);
             TBResguardarCinta.Location = new Point(21, 164);
             TBResguardarCinta.MaxLength = 20;
             TBResguardarCinta.Name = "TBResguardarCinta";
-            TBResguardarCinta.Size = new Size(412, 56);
+            TBResguardarCinta.Size = new Size(412, 43);
             TBResguardarCinta.TabIndex = 13;
             TBResguardarCinta.TextChanged += TBResguardarCinta_TextChanged;
             TBResguardarCinta.KeyDown += TBResguardarCinta_KeyDown;
@@ -175,16 +176,18 @@
             // CLBCintasEnUso
             // 
             CLBCintasEnUso.CheckOnClick = true;
-            CLBCintasEnUso.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CLBCintasEnUso.Font = new Font("Segoe UI", 12.75F);
             CLBCintasEnUso.FormattingEnabled = true;
-            CLBCintasEnUso.Location = new Point(21, 303);
+            CLBCintasEnUso.Location = new Point(21, 253);
             CLBCintasEnUso.Name = "CLBCintasEnUso";
-            CLBCintasEnUso.Size = new Size(412, 236);
+            CLBCintasEnUso.Size = new Size(412, 329);
             CLBCintasEnUso.TabIndex = 14;
+            CLBCintasEnUso.SelectedIndexChanged += CLBCintasEnUso_SelectedIndexChanged;
             // 
             // btnResguardarCinta
             // 
-            btnResguardarCinta.Location = new Point(143, 573);
+            btnResguardarCinta.Font = new Font("Segoe UI", 12.75F);
+            btnResguardarCinta.Location = new Point(129, 610);
             btnResguardarCinta.Name = "btnResguardarCinta";
             btnResguardarCinta.Size = new Size(165, 56);
             btnResguardarCinta.TabIndex = 15;
@@ -196,7 +199,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(164, 182, 196);
+            BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
             Controls.Add(btnResguardarCinta);
             Controls.Add(CLBCintasEnUso);

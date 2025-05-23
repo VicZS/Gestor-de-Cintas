@@ -291,82 +291,94 @@ namespace Gestor_de_Etiquetas
 
             using (var workbook = new XLWorkbook())
             {
-                var ws = workbook.Worksheets.Add("Contenedores");
+                var worksheet = workbook.Worksheets.Add("Contenedores");
 
-                // Encabezado (opcional)
-                ws.Cell(1, 1).Value = "ID Contenedor";
-                ws.Cell(1, 2).Value = "Fecha de Creación";
-                ws.Cell(1, 3).Value = "ID Cinta";
+                int columnaInicio = 1;
 
-                int fila = 2;
-
-                foreach (var cont in contenedores)
+                foreach (var contenedor in contenedores)
                 {
-                    int cantidadCintas = cont.Cintas.Count;
-                    int inicioBloque = fila;
+                    int fila = 1;
 
-                    if (cantidadCintas == 0)
+                    // Título: Contenedor T123...
+                    worksheet.Cell(fila, columnaInicio).Value = $"Contenedor {contenedor.Id}";
+                    worksheet.Range(fila, columnaInicio, fila, columnaInicio + 1).Merge().Style
+                        .Font.SetBold().Font.FontSize = 12;
+
+                    fila++;
+
+                    // Encabezados
+                    worksheet.Cell(fila, columnaInicio).Value = "Fecha de Creación";
+                    worksheet.Cell(fila, columnaInicio + 1).Value = "ID Cinta";
+                    worksheet.Range(fila, columnaInicio, fila, columnaInicio + 1).Style
+                        .Font.SetBold();
+
+                    fila++;
+
+                    bool fechaEscrita = false;
+                    int filaInicioFecha = fila;  // Guardamos la fila inicial donde pondremos la fecha
+
+                    foreach (var cinta in contenedor.Cintas)
                     {
-                        // Sin cintas: solo una fila
-                        ws.Cell(fila, 1).Value = cont.Id;
-                        ws.Cell(fila, 2).Value = cont.FechaCreacion?.ToString("dd-MM-yy") ?? "";
+                        worksheet.Cell(fila, columnaInicio + 1).Value = cinta.Id;
                         fila++;
                     }
-                    else
+
+                    // Ahora que sabemos cuántas filas ocupan las cintas, combinamos las celdas para la fecha:
+                    if (!fechaEscrita && contenedor.Cintas.Any())
                     {
-                        // Escribir cintas en nuevas filas
-                        foreach (var cinta in cont.Cintas)
-                        {
-                            ws.Cell(fila, 3).Value = cinta.Id;
-                            fila++;
-                        }
+                        // Combinar desde filaInicioFecha hasta fila - 1 (última fila usada)
+                        var rango = worksheet.Range(filaInicioFecha, columnaInicio, fila - 1, columnaInicio);
+                        rango.Merge();
 
-                        // Combinar celdas para contenedor y fecha
-                        ws.Range(inicioBloque, 1, fila - 1, 1).Merge().Value = cont.Id;
-                        ws.Range(inicioBloque, 2, fila - 1, 2).Merge().Value = cont.FechaCreacion?.ToString("dd-MM-yy") ?? "";
+                        // Asignar valor a la celda combinada
+                        rango.FirstCell().Value = contenedor.FechaCreacion?.ToString("dd/MM/yyyy");
 
-                        // Centrado vertical y horizontal
-                        ws.Range(inicioBloque, 1, fila - 1, 2).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-                        ws.Range(inicioBloque, 1, fila - 1, 2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        // Centrar horizontal y verticalmente
+                        rango.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        rango.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
 
-                        // Borde grueso alrededor del bloque del contenedor
-                        ws.Range(inicioBloque, 1, fila - 1, 3).Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
+                        fechaEscrita = true;
+                    }
+                    else if (!fechaEscrita)
+                    {
+                        // Si no hay cintas, sólo poner la fecha en una celda
+                        worksheet.Cell(fila, columnaInicio).Value = contenedor.FechaCreacion?.ToString("dd/MM/yyyy");
+                        worksheet.Cell(fila, columnaInicio).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        worksheet.Cell(fila, columnaInicio).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                        fechaEscrita = true;
                     }
 
-                    fila++; // Fila vacía entre contenedores
-                }
+                    // Total de cintas
+                    worksheet.Cell(fila, columnaInicio).Value = $"Total de Cintas: {contenedor.Cintas.Count}";
+                    worksheet.Range(fila, columnaInicio, fila, columnaInicio + 1).Merge().Style
+                        .Font.SetBold();
 
-                // Ajustar ancho automático
-                ws.Columns().AdjustToContents();
+                    // Ajustar ancho
+                    worksheet.Column(columnaInicio).AdjustToContents();
+                    worksheet.Column(columnaInicio + 1).AdjustToContents();
+
+                    // Espacio entre bloques de contenedores (2 columnas por contenedor)
+                    columnaInicio += 3; // una columna vacía entre contenedores
+                }
 
                 try
                 {
                     workbook.SaveAs(rutaCompleta);
-                }
-                catch (IOException)
-                {
-                    System.Windows.Forms.MessageBox.Show(
-                        "No se puede guardar el archivo porque ya está abierto.\nPor favor, cierre el archivo y vuelva a intentarlo.",
-                        "Error al guardar",
-                        System.Windows.Forms.MessageBoxButtons.OK,
-                        System.Windows.Forms.MessageBoxIcon.Error
-                    );
-
+                    MessageBox.Show("Exportación completada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
+
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show(
-                        $"Ocurrió un error inesperado:\n{ex.Message}",
-                        "Error",
-                        System.Windows.Forms.MessageBoxButtons.OK,
-                        System.Windows.Forms.MessageBoxIcon.Error
-                    );
+                    MessageBox.Show("Error al guardar el reporte");
+                    return;
                 }
 
-                MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
+                
             }
+
         }
+
 
         public void ExportarCintasDeContenedorAExcel(List<Cinta> cintas, string nombreContenedor)
         {

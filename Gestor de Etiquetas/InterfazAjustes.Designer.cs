@@ -47,48 +47,50 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Sans Serif Collection", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(47, 51);
+            label1.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label1.Location = new Point(63, 78);
             label1.Name = "label1";
-            label1.Size = new Size(167, 58);
+            label1.Size = new Size(137, 23);
             label1.TabIndex = 0;
             label1.Text = "Generar Backup";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Sans Serif Collection", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(599, 51);
+            label2.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label2.Location = new Point(623, 78);
             label2.Name = "label2";
-            label2.Size = new Size(154, 58);
+            label2.Size = new Size(128, 23);
             label2.TabIndex = 1;
             label2.Text = "Cargar Backup";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Sans Serif Collection", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(58, 304);
+            label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label3.Location = new Point(63, 422);
             label3.Name = "label3";
-            label3.Size = new Size(196, 58);
+            label3.Size = new Size(164, 23);
             label3.TabIndex = 2;
             label3.Text = "Cambiar Impresora";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Sans Serif Collection", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(643, 326);
+            label4.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label4.Location = new Point(623, 422);
             label4.Name = "label4";
-            label4.Size = new Size(226, 58);
+            label4.Size = new Size(196, 23);
             label4.TabIndex = 3;
             label4.Text = "# Copias por Impresion";
             // 
             // btnCrearBackup
             // 
-            btnCrearBackup.Location = new Point(63, 111);
+            btnCrearBackup.Font = new Font("Segoe UI", 12.75F);
+            btnCrearBackup.Location = new Point(65, 150);
+            btnCrearBackup.Margin = new Padding(3, 1, 3, 1);
             btnCrearBackup.Name = "btnCrearBackup";
-            btnCrearBackup.Size = new Size(123, 55);
+            btnCrearBackup.Size = new Size(119, 35);
             btnCrearBackup.TabIndex = 4;
             btnCrearBackup.Text = "Generar";
             btnCrearBackup.UseVisualStyleBackColor = true;
@@ -96,9 +98,11 @@
             // 
             // btnCargarBackup
             // 
-            btnCargarBackup.Location = new Point(612, 170);
+            btnCargarBackup.Font = new Font("Segoe UI", 12.75F);
+            btnCargarBackup.Location = new Point(623, 141);
+            btnCargarBackup.Margin = new Padding(3, 1, 3, 1);
             btnCargarBackup.Name = "btnCargarBackup";
-            btnCargarBackup.Size = new Size(119, 49);
+            btnCargarBackup.Size = new Size(119, 35);
             btnCargarBackup.TabIndex = 5;
             btnCargarBackup.Text = "Aceptar";
             btnCargarBackup.UseVisualStyleBackColor = true;
@@ -107,27 +111,33 @@
             // LNombreImpresoraActual
             // 
             LNombreImpresoraActual.AutoSize = true;
-            LNombreImpresoraActual.Location = new Point(58, 349);
+            LNombreImpresoraActual.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            LNombreImpresoraActual.Location = new Point(65, 460);
             LNombreImpresoraActual.Name = "LNombreImpresoraActual";
-            LNombreImpresoraActual.Size = new Size(177, 58);
+            LNombreImpresoraActual.Size = new Size(154, 23);
             LNombreImpresoraActual.TabIndex = 6;
             LNombreImpresoraActual.Text = "Nombre Impresora";
             // 
             // NUDNumCopias
             // 
-            NUDNumCopias.Location = new Point(658, 401);
+            NUDNumCopias.Font = new Font("Segoe UI", 12.75F);
+            NUDNumCopias.Location = new Point(623, 479);
+            NUDNumCopias.Margin = new Padding(1, 0, 1, 0);
             NUDNumCopias.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             NUDNumCopias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NUDNumCopias.Name = "NUDNumCopias";
-            NUDNumCopias.Size = new Size(56, 53);
+            NUDNumCopias.Size = new Size(58, 30);
             NUDNumCopias.TabIndex = 7;
+            NUDNumCopias.TextAlign = HorizontalAlignment.Center;
             NUDNumCopias.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnCambiarNumCopias
             // 
-            btnCambiarNumCopias.Location = new Point(750, 405);
+            btnCambiarNumCopias.Font = new Font("Segoe UI", 12.75F);
+            btnCambiarNumCopias.Location = new Point(700, 474);
+            btnCambiarNumCopias.Margin = new Padding(3, 1, 3, 1);
             btnCambiarNumCopias.Name = "btnCambiarNumCopias";
-            btnCambiarNumCopias.Size = new Size(119, 49);
+            btnCambiarNumCopias.Size = new Size(119, 35);
             btnCambiarNumCopias.TabIndex = 8;
             btnCambiarNumCopias.Text = "Aceptar";
             btnCambiarNumCopias.UseVisualStyleBackColor = true;
@@ -135,17 +145,20 @@
             // 
             // TBNuevoNombreImpresora
             // 
-            TBNuevoNombreImpresora.Font = new Font("Sans Serif Collection", 9.749998F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TBNuevoNombreImpresora.Location = new Point(63, 405);
+            TBNuevoNombreImpresora.Font = new Font("Segoe UI", 12.75F);
+            TBNuevoNombreImpresora.Location = new Point(63, 514);
+            TBNuevoNombreImpresora.Margin = new Padding(3, 1, 3, 1);
             TBNuevoNombreImpresora.Name = "TBNuevoNombreImpresora";
-            TBNuevoNombreImpresora.Size = new Size(224, 42);
+            TBNuevoNombreImpresora.Size = new Size(224, 30);
             TBNuevoNombreImpresora.TabIndex = 9;
             // 
             // btnCambiarNomImpresora
             // 
-            btnCambiarNomImpresora.Location = new Point(63, 453);
+            btnCambiarNomImpresora.Font = new Font("Segoe UI", 12.75F);
+            btnCambiarNomImpresora.Location = new Point(63, 565);
+            btnCambiarNomImpresora.Margin = new Padding(3, 1, 3, 1);
             btnCambiarNomImpresora.Name = "btnCambiarNomImpresora";
-            btnCambiarNomImpresora.Size = new Size(119, 49);
+            btnCambiarNomImpresora.Size = new Size(119, 35);
             btnCambiarNomImpresora.TabIndex = 10;
             btnCambiarNomImpresora.Text = "Cambiar";
             btnCambiarNomImpresora.UseVisualStyleBackColor = true;
@@ -154,10 +167,11 @@
             // LSeleccionaArchivo
             // 
             LSeleccionaArchivo.AutoSize = true;
+            LSeleccionaArchivo.Font = new Font("Segoe UI", 12.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             LSeleccionaArchivo.ForeColor = Color.Blue;
-            LSeleccionaArchivo.Location = new Point(599, 109);
+            LSeleccionaArchivo.Location = new Point(623, 111);
             LSeleccionaArchivo.Name = "LSeleccionaArchivo";
-            LSeleccionaArchivo.Size = new Size(193, 58);
+            LSeleccionaArchivo.Size = new Size(161, 23);
             LSeleccionaArchivo.TabIndex = 11;
             LSeleccionaArchivo.Text = "Seleccionar Archivo...";
             LSeleccionaArchivo.Click += LSeleccionaArchivo_Click;
@@ -168,9 +182,10 @@
             // 
             // InterfazAjustes
             // 
-            AutoScaleDimensions = new SizeF(10F, 58F);
+            AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(960, 636);
+            BackColor = Color.FromArgb(216, 223, 231);
+            ClientSize = new Size(976, 678);
             Controls.Add(LSeleccionaArchivo);
             Controls.Add(btnCambiarNomImpresora);
             Controls.Add(TBNuevoNombreImpresora);
@@ -183,11 +198,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Font = new Font("Sans Serif Collection", 12.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 8, 3, 8);
             Name = "InterfazAjustes";
-            Text = "InterfazAjustes";
+            Text = "1";
             ((System.ComponentModel.ISupportInitialize)NUDNumCopias).EndInit();
             ResumeLayout(false);
             PerformLayout();
