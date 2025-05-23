@@ -323,25 +323,18 @@ namespace Gestor_de_Etiquetas
                         fila++;
                     }
 
-                    // Ahora que sabemos cuántas filas ocupan las cintas, combinamos las celdas para la fecha:
+                    // Combinar celdas para la fecha de creación y centrar
                     if (!fechaEscrita && contenedor.Cintas.Any())
                     {
-                        // Combinar desde filaInicioFecha hasta fila - 1 (última fila usada)
                         var rango = worksheet.Range(filaInicioFecha, columnaInicio, fila - 1, columnaInicio);
                         rango.Merge();
-
-                        // Asignar valor a la celda combinada
                         rango.FirstCell().Value = contenedor.FechaCreacion?.ToString("dd/MM/yyyy");
-
-                        // Centrar horizontal y verticalmente
                         rango.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                         rango.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-
                         fechaEscrita = true;
                     }
                     else if (!fechaEscrita)
                     {
-                        // Si no hay cintas, sólo poner la fecha en una celda
                         worksheet.Cell(fila, columnaInicio).Value = contenedor.FechaCreacion?.ToString("dd/MM/yyyy");
                         worksheet.Cell(fila, columnaInicio).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                         worksheet.Cell(fila, columnaInicio).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
@@ -353,7 +346,21 @@ namespace Gestor_de_Etiquetas
                     worksheet.Range(fila, columnaInicio, fila, columnaInicio + 1).Merge().Style
                         .Font.SetBold();
 
-                    // Ajustar ancho
+                    // ---- APLICAR BORDES ----
+
+                    // Rango total del contenedor (desde título hasta total)
+                    int filaInicioContenedor = 1;
+                    int filaFinContenedor = fila;
+
+                    var rangoContenedor = worksheet.Range(filaInicioContenedor, columnaInicio, filaFinContenedor, columnaInicio + 1);
+
+                    // Bordes gruesos alrededor del contenedor (border outside thick)
+                    rangoContenedor.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
+
+                    // Bordes delgados para celdas internas (border inside thin)
+                    rangoContenedor.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+
+                    // Ajustar ancho de columnas
                     worksheet.Column(columnaInicio).AdjustToContents();
                     worksheet.Column(columnaInicio + 1).AdjustToContents();
 
@@ -366,17 +373,13 @@ namespace Gestor_de_Etiquetas
                     workbook.SaveAs(rutaCompleta);
                     MessageBox.Show("Exportación completada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
-
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error al guardar el reporte");
                     return;
                 }
-
-                
             }
-
         }
 
 
