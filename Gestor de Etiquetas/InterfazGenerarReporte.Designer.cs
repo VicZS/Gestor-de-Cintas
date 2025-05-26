@@ -60,7 +60,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label4.Location = new Point(572, 165);
+            label4.Location = new Point(651, 165);
             label4.Name = "label4";
             label4.Size = new Size(55, 23);
             label4.TabIndex = 25;
@@ -70,7 +70,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label3.Location = new Point(574, 105);
+            label3.Location = new Point(651, 107);
             label3.Name = "label3";
             label3.Size = new Size(32, 23);
             label3.TabIndex = 24;
@@ -80,7 +80,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label2.Location = new Point(40, 151);
+            label2.Location = new Point(123, 165);
             label2.Name = "label2";
             label2.Size = new Size(69, 23);
             label2.TabIndex = 23;
@@ -100,25 +100,28 @@
             // DTPGenerarExelDia
             // 
             DTPGenerarExelDia.Font = new Font("Segoe UI", 12.75F);
-            DTPGenerarExelDia.Location = new Point(40, 178);
+            DTPGenerarExelDia.Format = DateTimePickerFormat.Short;
+            DTPGenerarExelDia.Location = new Point(87, 191);
             DTPGenerarExelDia.Name = "DTPGenerarExelDia";
-            DTPGenerarExelDia.Size = new Size(297, 30);
+            DTPGenerarExelDia.Size = new Size(157, 30);
             DTPGenerarExelDia.TabIndex = 21;
             // 
             // DTPGenerarExelDiaInicio
             // 
             DTPGenerarExelDiaInicio.Font = new Font("Segoe UI", 12.75F);
-            DTPGenerarExelDiaInicio.Location = new Point(572, 133);
+            DTPGenerarExelDiaInicio.Format = DateTimePickerFormat.Short;
+            DTPGenerarExelDiaInicio.Location = new Point(651, 133);
             DTPGenerarExelDiaInicio.Name = "DTPGenerarExelDiaInicio";
-            DTPGenerarExelDiaInicio.Size = new Size(301, 30);
+            DTPGenerarExelDiaInicio.Size = new Size(160, 30);
             DTPGenerarExelDiaInicio.TabIndex = 20;
             // 
             // DTPGenerarExelDiaFin
             // 
             DTPGenerarExelDiaFin.Font = new Font("Segoe UI", 12.75F);
-            DTPGenerarExelDiaFin.Location = new Point(572, 191);
+            DTPGenerarExelDiaFin.Format = DateTimePickerFormat.Short;
+            DTPGenerarExelDiaFin.Location = new Point(651, 191);
             DTPGenerarExelDiaFin.Name = "DTPGenerarExelDiaFin";
-            DTPGenerarExelDiaFin.Size = new Size(301, 30);
+            DTPGenerarExelDiaFin.Size = new Size(160, 30);
             DTPGenerarExelDiaFin.TabIndex = 19;
             // 
             // btnGenerarExcelEntreDias

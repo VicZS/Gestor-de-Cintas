@@ -14,6 +14,8 @@ namespace Gestor_de_Etiquetas
             InitializeComponent();
             gestor.CrearContenedor(ContenedorResguardo);
             gestor.CrearContenedor(ContenedorEnUso);
+
+            string aux = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void label5_Click(object sender, EventArgs e)

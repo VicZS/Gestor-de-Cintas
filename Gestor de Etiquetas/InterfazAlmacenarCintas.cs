@@ -214,7 +214,8 @@ namespace Gestor_de_Etiquetas
                 foreach (string idCinta in cintasSeleccionadas)
                 {
                     if (gestor.EliminarCinta(idCinta))
-                        eliminadas++;
+                        gestor.AgregarCintaAContenedor("Resguardo", idCinta);
+                    eliminadas++;
                 }
 
                 MessageBox.Show($"{eliminadas} cinta(s) eliminada(s) correctamente.");

@@ -81,9 +81,12 @@
             // 
             // DTPMostrarContenedores
             // 
+            DTPMostrarContenedores.CustomFormat = "dd MM yyyy";
             DTPMostrarContenedores.Font = new Font("Segoe UI", 12.75F);
+            DTPMostrarContenedores.Format = DateTimePickerFormat.Short;
             DTPMostrarContenedores.Location = new Point(517, 63);
             DTPMostrarContenedores.Name = "DTPMostrarContenedores";
+            DTPMostrarContenedores.RightToLeft = RightToLeft.No;
             DTPMostrarContenedores.Size = new Size(389, 30);
             DTPMostrarContenedores.TabIndex = 25;
             DTPMostrarContenedores.ValueChanged += DTPMostrarContenedores_ValueChanged;

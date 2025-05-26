@@ -103,6 +103,7 @@
             // DTPCrearContenedor
             // 
             DTPCrearContenedor.Font = new Font("Segoe UI", 12.75F);
+            DTPCrearContenedor.Format = DateTimePickerFormat.Short;
             DTPCrearContenedor.Location = new Point(23, 158);
             DTPCrearContenedor.Name = "DTPCrearContenedor";
             DTPCrearContenedor.Size = new Size(315, 30);
