@@ -112,7 +112,7 @@
             // btnEliminarContenedorSeleccionado
             // 
             btnEliminarContenedorSeleccionado.Font = new Font("Segoe UI", 12.75F);
-            btnEliminarContenedorSeleccionado.Location = new Point(790, 243);
+            btnEliminarContenedorSeleccionado.Location = new Point(744, 222);
             btnEliminarContenedorSeleccionado.Name = "btnEliminarContenedorSeleccionado";
             btnEliminarContenedorSeleccionado.Size = new Size(139, 34);
             btnEliminarContenedorSeleccionado.TabIndex = 39;
@@ -125,7 +125,7 @@
             CBListaContenedoresEliminar.DropDownStyle = ComboBoxStyle.DropDownList;
             CBListaContenedoresEliminar.Font = new Font("Segoe UI", 12.75F);
             CBListaContenedoresEliminar.FormattingEnabled = true;
-            CBListaContenedoresEliminar.Location = new Point(614, 197);
+            CBListaContenedoresEliminar.Location = new Point(568, 176);
             CBListaContenedoresEliminar.Name = "CBListaContenedoresEliminar";
             CBListaContenedoresEliminar.Size = new Size(315, 31);
             CBListaContenedoresEliminar.TabIndex = 38;
@@ -136,7 +136,7 @@
             CLBListaCintasEliminar.CheckOnClick = true;
             CLBListaCintasEliminar.Font = new Font("Segoe UI", 12.75F);
             CLBListaCintasEliminar.FormattingEnabled = true;
-            CLBListaCintasEliminar.Location = new Point(698, 405);
+            CLBListaCintasEliminar.Location = new Point(652, 384);
             CLBListaCintasEliminar.Name = "CLBListaCintasEliminar";
             CLBListaCintasEliminar.Size = new Size(231, 129);
             CLBListaCintasEliminar.TabIndex = 37;
@@ -144,7 +144,7 @@
             // btnEliminarCintaSeleccionada
             // 
             btnEliminarCintaSeleccionada.Font = new Font("Segoe UI", 12.75F);
-            btnEliminarCintaSeleccionada.Location = new Point(790, 612);
+            btnEliminarCintaSeleccionada.Location = new Point(744, 591);
             btnEliminarCintaSeleccionada.Name = "btnEliminarCintaSeleccionada";
             btnEliminarCintaSeleccionada.Size = new Size(139, 34);
             btnEliminarCintaSeleccionada.TabIndex = 36;
@@ -176,7 +176,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(762, 162);
+            label3.Location = new Point(716, 141);
             label3.Name = "label3";
             label3.Size = new Size(175, 23);
             label3.TabIndex = 48;
@@ -206,7 +206,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label6.Location = new Point(681, 360);
+            label6.Location = new Point(635, 339);
             label6.Name = "label6";
             label6.Size = new Size(251, 23);
             label6.TabIndex = 51;
@@ -216,7 +216,7 @@
             // 
             TBCintaEliminar.CharacterCasing = CharacterCasing.Upper;
             TBCintaEliminar.Font = new Font("Segoe UI", 12.75F);
-            TBCintaEliminar.Location = new Point(614, 576);
+            TBCintaEliminar.Location = new Point(568, 555);
             TBCintaEliminar.MaxLength = 8;
             TBCintaEliminar.Name = "TBCintaEliminar";
             TBCintaEliminar.Size = new Size(315, 30);
@@ -227,7 +227,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label8.Location = new Point(738, 537);
+            label8.Location = new Point(692, 516);
             label8.Name = "label8";
             label8.Size = new Size(194, 23);
             label8.TabIndex = 53;

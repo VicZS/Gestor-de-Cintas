@@ -44,6 +44,8 @@
             btnGenerarExcelEnUso = new Button();
             btnGenerarExceldelContenedor = new Button();
             CBListaContenedores = new ComboBox();
+            label8 = new Label();
+            btnGenerarReporteTodosContenedores = new Button();
             SuspendLayout();
             // 
             // label5
@@ -60,7 +62,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label4.Location = new Point(651, 165);
+            label4.Location = new Point(697, 165);
             label4.Name = "label4";
             label4.Size = new Size(55, 23);
             label4.TabIndex = 25;
@@ -70,7 +72,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label3.Location = new Point(651, 107);
+            label3.Location = new Point(697, 107);
             label3.Name = "label3";
             label3.Size = new Size(32, 23);
             label3.TabIndex = 24;
@@ -80,7 +82,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
-            label2.Location = new Point(123, 165);
+            label2.Location = new Point(434, 165);
             label2.Name = "label2";
             label2.Size = new Size(69, 23);
             label2.TabIndex = 23;
@@ -89,7 +91,7 @@
             // btnGenerarExcelDia
             // 
             btnGenerarExcelDia.Font = new Font("Segoe UI", 12.75F);
-            btnGenerarExcelDia.Location = new Point(123, 227);
+            btnGenerarExcelDia.Location = new Point(417, 227);
             btnGenerarExcelDia.Name = "btnGenerarExcelDia";
             btnGenerarExcelDia.Size = new Size(96, 35);
             btnGenerarExcelDia.TabIndex = 22;
@@ -101,7 +103,7 @@
             // 
             DTPGenerarExelDia.Font = new Font("Segoe UI", 12.75F);
             DTPGenerarExelDia.Format = DateTimePickerFormat.Short;
-            DTPGenerarExelDia.Location = new Point(87, 191);
+            DTPGenerarExelDia.Location = new Point(396, 191);
             DTPGenerarExelDia.Name = "DTPGenerarExelDia";
             DTPGenerarExelDia.Size = new Size(157, 30);
             DTPGenerarExelDia.TabIndex = 21;
@@ -110,7 +112,7 @@
             // 
             DTPGenerarExelDiaInicio.Font = new Font("Segoe UI", 12.75F);
             DTPGenerarExelDiaInicio.Format = DateTimePickerFormat.Short;
-            DTPGenerarExelDiaInicio.Location = new Point(651, 133);
+            DTPGenerarExelDiaInicio.Location = new Point(697, 133);
             DTPGenerarExelDiaInicio.Name = "DTPGenerarExelDiaInicio";
             DTPGenerarExelDiaInicio.Size = new Size(160, 30);
             DTPGenerarExelDiaInicio.TabIndex = 20;
@@ -119,7 +121,7 @@
             // 
             DTPGenerarExelDiaFin.Font = new Font("Segoe UI", 12.75F);
             DTPGenerarExelDiaFin.Format = DateTimePickerFormat.Short;
-            DTPGenerarExelDiaFin.Location = new Point(651, 191);
+            DTPGenerarExelDiaFin.Location = new Point(697, 191);
             DTPGenerarExelDiaFin.Name = "DTPGenerarExelDiaFin";
             DTPGenerarExelDiaFin.Size = new Size(160, 30);
             DTPGenerarExelDiaFin.TabIndex = 19;
@@ -127,7 +129,7 @@
             // btnGenerarExcelEntreDias
             // 
             btnGenerarExcelEntreDias.Font = new Font("Segoe UI", 12.75F);
-            btnGenerarExcelEntreDias.Location = new Point(686, 227);
+            btnGenerarExcelEntreDias.Location = new Point(732, 227);
             btnGenerarExcelEntreDias.Name = "btnGenerarExcelEntreDias";
             btnGenerarExcelEntreDias.Size = new Size(96, 35);
             btnGenerarExcelEntreDias.TabIndex = 18;
@@ -209,12 +211,35 @@
             CBListaContenedores.Size = new Size(234, 31);
             CBListaContenedores.TabIndex = 33;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label8.Location = new Point(23, 181);
+            label8.Name = "label8";
+            label8.Size = new Size(198, 23);
+            label8.TabIndex = 35;
+            label8.Text = "Todos los Contenedores";
+            // 
+            // btnGenerarReporteTodosContenedores
+            // 
+            btnGenerarReporteTodosContenedores.Font = new Font("Segoe UI", 12.75F);
+            btnGenerarReporteTodosContenedores.Location = new Point(72, 227);
+            btnGenerarReporteTodosContenedores.Name = "btnGenerarReporteTodosContenedores";
+            btnGenerarReporteTodosContenedores.Size = new Size(96, 35);
+            btnGenerarReporteTodosContenedores.TabIndex = 34;
+            btnGenerarReporteTodosContenedores.Text = "Generar";
+            btnGenerarReporteTodosContenedores.UseVisualStyleBackColor = true;
+            btnGenerarReporteTodosContenedores.Click += btnGenerarReporteTodosContenedores_Click;
+            // 
             // InterfazGenerarReporte
             // 
             AutoScaleDimensions = new SizeF(10F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
+            Controls.Add(label8);
+            Controls.Add(btnGenerarReporteTodosContenedores);
             Controls.Add(CBListaContenedores);
             Controls.Add(btnGenerarExceldelContenedor);
             Controls.Add(btnGenerarExcelEnUso);
@@ -257,5 +282,7 @@
         private Button btnGenerarExcelEnUso;
         private Button btnGenerarExceldelContenedor;
         private ComboBox CBListaContenedores;
+        private Label label8;
+        private Button btnGenerarReporteTodosContenedores;
     }
 }

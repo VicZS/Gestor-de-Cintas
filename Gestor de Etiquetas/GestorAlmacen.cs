@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 using ClosedXML.Excel;
 using System.IO;
+using ClosedXML;
 
 namespace Gestor_de_Etiquetas
 {

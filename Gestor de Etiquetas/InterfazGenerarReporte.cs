@@ -46,6 +46,16 @@ namespace Gestor_de_Etiquetas
 
             gestor.ExportarCintasDeContenedorAExcel(result, "Resguardo");
 
+            MessageBox.Show($"Reporte generado con éxito");
+
+        }
+
+        private void btnGenerarReporteTodosContenedores_Click(object sender, EventArgs e)
+        {
+            var result = gestor.ObtenerTodosLosContenedores();
+
+            gestor.ExportarContenedoresAExcel(result, "Todos los Contenedores");
+
         }
 
         private void btnGenerarExcelEnUso_Click(object sender, EventArgs e)
@@ -53,12 +63,13 @@ namespace Gestor_de_Etiquetas
             var result = gestor.ObtenerCintasDeContenedor("EnUso");
 
             gestor.ExportarCintasDeContenedorAExcel(result, "EnUso");
+
         }
 
         private void btnGenerarExceldelContenedor_Click(object sender, EventArgs e)
         {
             string nombreContenedor = CBListaContenedores.Text;
-            if(string.IsNullOrEmpty(nombreContenedor))
+            if (string.IsNullOrEmpty(nombreContenedor))
             {
                 MessageBox.Show("Por favor, seleccione un contenedor.");
                 return;
@@ -67,6 +78,7 @@ namespace Gestor_de_Etiquetas
             var result = gestor.ObtenerCintasDeContenedor(nombreContenedor);
 
             gestor.ExportarCintasDeContenedorAExcel(result, nombreContenedor);
+
         }
 
         private void ActualizarCBListaContenedores()
@@ -76,12 +88,13 @@ namespace Gestor_de_Etiquetas
             foreach (var conetenedor in gestor.ObtenerTodosLosContenedores())
             {
 
-                if(conetenedor.Id.ToString() != "Resguardo" && conetenedor.Id.ToString() != "EnUso")
+                if (conetenedor.Id.ToString() != "Resguardo" && conetenedor.Id.ToString() != "EnUso")
                 {
                     CBListaContenedores.Items.Add(conetenedor.Id.ToString());
                 }
             }
         }
+
         
     }
 }
