@@ -14,18 +14,17 @@ namespace Gestor_de_Etiquetas
             InitializeComponent();
             gestor.CrearContenedor(ContenedorResguardo);
             gestor.CrearContenedor(ContenedorEnUso);
-
-            string aux = DateTime.Now.ToString("dd/MM/yyyy");
+            abrirInterface(new InterfazAyuda());
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            cerrarInterface();
+            abrirInterface(new InterfazAyuda());
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            cerrarInterface();
+            abrirInterface(new InterfazAyuda());
         }
 
 
