@@ -45,6 +45,8 @@
             LVListaContenedoresConCintasReutilizar = new ListView();
             LVListaContenedoresDelDia = new ListView();
             LVListaCintasContenedor = new ListView();
+            label3 = new Label();
+            LVListaTodosContenedores = new ListView();
             SuspendLayout();
             // 
             // TBCintaABuscar
@@ -201,13 +203,14 @@
             LVListaContenedoresConCintasReutilizar.TabIndex = 47;
             LVListaContenedoresConCintasReutilizar.UseCompatibleStateImageBehavior = false;
             LVListaContenedoresConCintasReutilizar.View = View.List;
+            LVListaContenedoresConCintasReutilizar.SelectedIndexChanged += LVListaContenedoresConCintasReutilizar_SelectedIndexChanged;
             // 
             // LVListaContenedoresDelDia
             // 
             LVListaContenedoresDelDia.Font = new Font("Segoe UI", 12.75F);
             LVListaContenedoresDelDia.Location = new Point(517, 113);
             LVListaContenedoresDelDia.Name = "LVListaContenedoresDelDia";
-            LVListaContenedoresDelDia.Size = new Size(389, 112);
+            LVListaContenedoresDelDia.Size = new Size(389, 49);
             LVListaContenedoresDelDia.TabIndex = 48;
             LVListaContenedoresDelDia.UseCompatibleStateImageBehavior = false;
             LVListaContenedoresDelDia.View = View.List;
@@ -222,12 +225,35 @@
             LVListaCintasContenedor.UseCompatibleStateImageBehavior = false;
             LVListaCintasContenedor.View = View.List;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold);
+            label3.Location = new Point(517, 187);
+            label3.Name = "label3";
+            label3.Size = new Size(198, 23);
+            label3.TabIndex = 50;
+            label3.Text = "Todos los Contenedores";
+            // 
+            // LVListaTodosContenedores
+            // 
+            LVListaTodosContenedores.Font = new Font("Segoe UI", 12.75F);
+            LVListaTodosContenedores.Location = new Point(517, 222);
+            LVListaTodosContenedores.Name = "LVListaTodosContenedores";
+            LVListaTodosContenedores.Size = new Size(389, 94);
+            LVListaTodosContenedores.TabIndex = 51;
+            LVListaTodosContenedores.UseCompatibleStateImageBehavior = false;
+            LVListaTodosContenedores.View = View.List;
+            LVListaTodosContenedores.SelectedIndexChanged += LVListaTodosContenedores_SelectedIndexChanged;
+            // 
             // InterfazVerCintasAlmacenadas
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
+            Controls.Add(LVListaTodosContenedores);
+            Controls.Add(label3);
             Controls.Add(LVListaCintasContenedor);
             Controls.Add(LVListaContenedoresDelDia);
             Controls.Add(LVListaContenedoresConCintasReutilizar);
@@ -271,5 +297,7 @@
         private ListView LVListaContenedoresConCintasReutilizar;
         private ListView LVListaContenedoresDelDia;
         private ListView LVListaCintasContenedor;
+        private Label label3;
+        private ListView LVListaTodosContenedores;
     }
 }

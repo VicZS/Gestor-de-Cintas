@@ -23,6 +23,7 @@ namespace Gestor_de_Etiquetas
             ActualizarLVListaCintasEnUso();
             ActualizarLVListaContenedoresConCintasReutilizar();
             ActualizarCBContenedorCintasAMostrar();
+            ActualizarLVListaTodosContenedores();
         }
 
         private void btnBuscarCinta_Click(object sender, EventArgs e)
@@ -90,6 +91,16 @@ namespace Gestor_de_Etiquetas
             }
         }
 
+        private void ActualizarLVListaTodosContenedores()
+        {
+            LVListaTodosContenedores.Items.Clear();
+
+            foreach (var contenedor in gestor.ObtenerTodosLosContenedores())
+            {
+                LVListaTodosContenedores.Items.Add(contenedor.Id.ToString());
+            }
+        }
+
         private void DTPMostrarContenedores_ValueChanged(object sender, EventArgs e)
         {
             LVListaContenedoresDelDia.Items.Clear();
@@ -104,5 +115,21 @@ namespace Gestor_de_Etiquetas
         {
 
         }
+
+        private void LVListaContenedoresConCintasReutilizar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBContenedorCintasAMostrar.Text = LVListaContenedoresConCintasReutilizar.SelectedItems.Count > 0
+                ? LVListaContenedoresConCintasReutilizar.SelectedItems[0].Text
+                : string.Empty;
+        }
+
+        private void LVListaTodosContenedores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBContenedorCintasAMostrar.Text = LVListaTodosContenedores.SelectedItems.Count > 0
+                ? LVListaTodosContenedores.SelectedItems[0].Text
+                : string.Empty;
+        }
+
+
     }
 }

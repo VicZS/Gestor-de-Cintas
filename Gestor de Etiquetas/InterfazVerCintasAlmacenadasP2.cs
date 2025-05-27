@@ -94,46 +94,50 @@ namespace Gestor_de_Etiquetas
 
             if (string.IsNullOrWhiteSpace(nombreContenedorDondeSeAgregara) || string.IsNullOrWhiteSpace(nombreCinta))
             {
-                MessageBox.Show("Por favor, selecciona un contenedor e ingresa un ID de cinta.");
+                MessageBox.Show("Por favor, selecciona un contenedor y/o ingresa un ID de cinta.");
                 return;
             }
 
             if (TBAgregarCinta.Text.StartsWith("PUE"))
             {
-                if (string.IsNullOrWhiteSpace(CBListaContenedores.Text))
-                {
-                    MessageBox.Show("Por favor, seleccione un contenedor.");
-                    TBAgregarCinta.Clear();
-                    return;
-                }
 
                 if (gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text) == null)
                 {
-                    if(nombreContenedorDondeSeAgregara == "Resguardo" || nombreContenedorDondeSeAgregara == "EnUso")
-                    {
-                        gestor.EliminarCinta(TBAgregarCinta.Text);
-                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
-                        ActualizarCBListaContenedoresEliminar();
-                        ActualizarCLBListaCintasEliminar();
-                        CargarContenedoresEnComboBox();
-                        TBAgregarCinta.Clear();
-                        return;
-                    }
-                    MessageBox.Show("La cinta escaneada no existe en el sistema.");
+                    MessageBox.Show("La cinta no se encuentra en ningún contenedor, se agregará al contenedor seleccionado.");
+
+                    gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                    ActualizarCBListaContenedoresEliminar();
+                    ActualizarCLBListaCintasEliminar();
+                    CargarContenedoresEnComboBox();
+                    
                     TBAgregarCinta.Clear();
                     return;
                 }
                 else
                 {
-                    var contenedor = gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text);
-                    if (contenedor != null)
+                    string contenedorActual = gestor.ObtenerContenedorDeCinta(TBAgregarCinta.Text).Id;
+                    string mensaje = "¿Estás seguro que deseas mover la cinta de contenedor?\n Contenedor actual: ";
+                    mensaje += string.Join("\n", contenedorActual.ToString());
+
+                    DialogResult resultado = MessageBox.Show(
+                        mensaje,
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (resultado == DialogResult.Yes)
                     {
-                        MessageBox.Show("La cinta ya fue escaneada y se encuentra en el contenedor: " + contenedor.Id);
+                        MessageBox.Show("La cinta se moverá al contenedor seleccionado.");
+                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                        ActualizarCBListaContenedoresEliminar();
+                        ActualizarCLBListaCintasEliminar();
+                        CargarContenedoresEnComboBox();
+
+                        TBAgregarCinta.Clear();
+                        return;
                     }
-                    else
-                    {
-                        MessageBox.Show("La cinta ya fue escaneada, pero no se encontró su contenedor.");
-                    }
+
                 }
 
                 TBAgregarCinta.Clear();
@@ -141,6 +145,7 @@ namespace Gestor_de_Etiquetas
             }
 
             MessageBox.Show("El codigo de la cinta no es válido.");
+            return;
 
         }
 
