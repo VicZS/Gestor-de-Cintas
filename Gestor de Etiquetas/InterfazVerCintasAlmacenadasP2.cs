@@ -105,7 +105,7 @@ namespace Gestor_de_Etiquetas
                 {
                     MessageBox.Show("La cinta no se encuentra en ningún contenedor, se agregará al contenedor seleccionado.");
 
-                    gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                    gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text, null);
                     ActualizarCBListaContenedoresEliminar();
                     ActualizarCLBListaCintasEliminar();
                     CargarContenedoresEnComboBox();
@@ -129,7 +129,7 @@ namespace Gestor_de_Etiquetas
                     if (resultado == DialogResult.Yes)
                     {
                         MessageBox.Show("La cinta se moverá al contenedor seleccionado.");
-                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text);
+                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, TBAgregarCinta.Text, null);
                         ActualizarCBListaContenedoresEliminar();
                         ActualizarCLBListaCintasEliminar();
                         CargarContenedoresEnComboBox();

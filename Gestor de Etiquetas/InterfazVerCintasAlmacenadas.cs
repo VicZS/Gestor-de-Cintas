@@ -24,6 +24,26 @@ namespace Gestor_de_Etiquetas
             ActualizarLVListaContenedoresConCintasReutilizar();
             ActualizarCBContenedorCintasAMostrar();
             ActualizarLVListaTodosContenedores();
+
+            CargarFechasValidas();
+        }
+
+        private List<DateTime> fechasValidas;
+
+        private void CargarFechasValidas()
+        {
+            // Asumiendo que cada contenedor tiene su FechaCreacion correctamente establecida
+            fechasValidas = gestor.ObtenerTodosLosContenedores()
+                .Where(c => c.FechaCreacion.HasValue)
+                .Select(c => c.FechaCreacion.Value.Date)
+                .Distinct()
+                .ToList();
+
+            // Opcional: si quieres que el DateTimePicker comience mostrando la fecha más reciente con datos
+            if (fechasValidas.Any())
+            {
+                DTPMostrarContenedores.Value = fechasValidas.Max();
+            }
         }
 
         private void btnBuscarCinta_Click(object sender, EventArgs e)
@@ -49,8 +69,9 @@ namespace Gestor_de_Etiquetas
 
             foreach (var cinta in gestor.ObtenerCintasDeContenedor("Resguardo"))
             {
-
-                LVListaCintasAlmacenLocal.Items.Add(cinta.Id.ToString());
+                string aux = cinta.Id.ToString() +" "+ cinta.FechaExtraccion?.ToString("dd/MM/yyyy");
+                //MessageBox.Show(aux);
+                LVListaCintasAlmacenLocal.Items.Add(aux);
             }
         }
 
@@ -103,13 +124,17 @@ namespace Gestor_de_Etiquetas
 
         private void DTPMostrarContenedores_ValueChanged(object sender, EventArgs e)
         {
-            LVListaContenedoresDelDia.Items.Clear();
-            foreach (var contenedor in gestor.ObtenerContenedoresPorFecha(DTPMostrarContenedores.Value))
-            {
-                LVListaContenedoresDelDia.Items.Add(contenedor.Id.ToString());
-            }
+            DateTime fechaSeleccionada = DTPMostrarContenedores.Value.Date;
 
+            LVListaContenedoresDelDia.Items.Clear();
+
+            foreach (var contenedor in gestor.ObtenerTodosLosContenedores()
+                .Where(c => c.FechaCreacion.HasValue && c.FechaCreacion.Value.Date == fechaSeleccionada))
+            {
+                LVListaContenedoresDelDia.Items.Add(contenedor.Id);
+            }
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {

@@ -16,12 +16,20 @@ namespace Gestor_de_Etiquetas
     public class Cinta
     {
         public string Id { get; set; }
+        public DateTime? FechaExtraccion { get; set; }
 
         public Cinta() { }
 
         public Cinta(string id)
         {
             Id = id;
+            FechaExtraccion = null;
+        }
+
+        public Cinta(string id, DateTime? fechaExtraccion)
+        {
+            Id = id;
+            FechaExtraccion = fechaExtraccion;
         }
     }
 
@@ -98,22 +106,27 @@ namespace Gestor_de_Etiquetas
         }
 
         // Crear cinta
-        public bool AgregarCintaAContenedor(string idContenedor, string idCinta)
+        public bool AgregarCintaAContenedor(string idContenedor, string idCinta, DateTime? fechaExtraccion)
         {
             if (IdCintaExiste(idCinta))
             {
-                //MessageBox.Show($"La Cinta '{idCinta}' ya existe.");
                 return false; // La cinta ya existe
             }
 
             var contenedor = contenedores.FirstOrDefault(c => c.Id == idContenedor);
             if (contenedor == null) return false;
 
-            contenedor.Cintas.Add(new Cinta(idCinta));
+            var nuevaCinta = new Cinta(idCinta)
+            {
+                FechaExtraccion = fechaExtraccion // Asignar la fecha (puede ser null)
+            };
+
+            contenedor.Cintas.Add(nuevaCinta);
             GuardarDatos();
-            //MessageBox.Show($"Cinta '{idCinta}' agregada al contenedor '{idContenedor}' con éxito.");
+
             return true;
         }
+
 
         // Eliminar contenedor
         public bool EliminarContenedor(string id)

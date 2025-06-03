@@ -114,7 +114,7 @@ namespace Gestor_de_Etiquetas
                     if (gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "Resguardo" || gestor.ObtenerContenedorDeCinta(codigoEscaneado.Text).Id.ToString() == "EnUso")
                     {
                         gestor.EliminarCinta(codigoEscaneado.Text);
-                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text);
+                        gestor.AgregarCintaAContenedor(CBListaContenedores.Text, codigoEscaneado.Text, null);
                         ActualizarCBListaCintas(CBListaContenedores.Text);
                         ActualizarCBCintasEnUso();
                     }
@@ -214,7 +214,7 @@ namespace Gestor_de_Etiquetas
                 foreach (string idCinta in cintasSeleccionadas)
                 {
                     if (gestor.EliminarCinta(idCinta))
-                        gestor.AgregarCintaAContenedor("Resguardo", idCinta);
+                        gestor.AgregarCintaAContenedor("Resguardo", idCinta, null);
                     eliminadas++;
                 }
 
@@ -258,7 +258,7 @@ namespace Gestor_de_Etiquetas
                     if (gestor.ObtenerContenedorDeCinta(TBResguardarCinta.Text).Id.ToString() == "EnUso")
                     {
                         gestor.EliminarCinta(TBResguardarCinta.Text);
-                        gestor.AgregarCintaAContenedor("Resguardo", TBResguardarCinta.Text);
+                        gestor.AgregarCintaAContenedor("Resguardo", TBResguardarCinta.Text, null);
                         ActualizarCBCintasEnUso();
 
                     }
@@ -329,7 +329,7 @@ namespace Gestor_de_Etiquetas
                 foreach (string idCinta in cintasSeleccionadas)
                 {
                     gestor.EliminarCinta(idCinta);
-                    gestor.AgregarCintaAContenedor("Resguardo", idCinta);
+                    gestor.AgregarCintaAContenedor("Resguardo", idCinta, DateTime.Now);
                     ActualizarCBCintasEnUso();
                     resguardadas++;
                 }

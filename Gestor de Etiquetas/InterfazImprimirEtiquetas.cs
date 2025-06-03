@@ -126,7 +126,7 @@ namespace Gestor_de_Etiquetas
             string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
             MessageBox.Show("Etiqueta a imprimir: " + etiquetaSiguiente);
 
-            gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
+            gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente, null);
             imprimir(etiquetaSiguiente);
             etiquetaReimprimir.Text = string.Empty;
             ActualizarLCintaSiguiente();
@@ -151,7 +151,7 @@ namespace Gestor_de_Etiquetas
 
                     string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
                     mensajeTotalEtiquetas += etiquetaSiguiente + " ";
-                    gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
+                    gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente, null);
                     imprimir(etiquetaSiguiente);
                     aux++;
 
@@ -172,7 +172,7 @@ namespace Gestor_de_Etiquetas
             {
                 string etiquetaSiguiente = gestor.ObtenerSiguienteIdCinta().ToString();
                 mensajeTotalEtiquetas += etiquetaSiguiente + " ";
-                gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente);
+                gestor.AgregarCintaAContenedor(ContenedorEnUso, etiquetaSiguiente, null);
                 imprimir(etiquetaSiguiente);
                 aux++;
 
