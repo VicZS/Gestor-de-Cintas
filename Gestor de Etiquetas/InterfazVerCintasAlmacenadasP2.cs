@@ -256,6 +256,35 @@ namespace Gestor_de_Etiquetas
                 return;
             }
 
+            if (TBCintaEliminar.Text != "")
+            {
+                
+
+                MessageBox.Show("Cintas seleccionada: " + TBCintaEliminar.Text);
+
+                // Crear mensaje de confirmación
+                string mensaje = "¿Estás seguro que deseas eliminar las siguientes cintas?\n\n";
+                mensaje += string.Join("\n", TBCintaEliminar.Text);
+
+                DialogResult resultado = MessageBox.Show(
+                    mensaje,
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                   gestor.EliminarCinta(TBCintaEliminar.Text);
+
+                    MessageBox.Show($"cinta eliminada correctamente.");
+                    ActualizarCBListaContenedoresEliminar();
+                    ActualizarCLBListaCintasEliminar();
+                    CargarContenedoresEnComboBox();
+
+                }
+                return;
+            }
 
 
 
