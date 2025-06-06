@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -32,19 +33,24 @@ namespace Gestor_de_Etiquetas
 
         private void CargarFechasValidas()
         {
-            // Asumiendo que cada contenedor tiene su FechaCreacion correctamente establecida
+            // Obtener las fechas válidas de los contenedores
             fechasValidas = gestor.ObtenerTodosLosContenedores()
                 .Where(c => c.FechaCreacion.HasValue)
                 .Select(c => c.FechaCreacion.Value.Date)
                 .Distinct()
+                .OrderBy(f => f) // Opcional: para ordenarlas cronológicamente
                 .ToList();
 
-            // Opcional: si quieres que el DateTimePicker comience mostrando la fecha más reciente con datos
-            if (fechasValidas.Any())
+            // Limpiar el ListView antes de cargar nuevas fechas
+            LVListaFechaContenedoresDisponibles.Items.Clear();
+
+            // Agregar cada fecha al ListView con el formato dd/MM/yyyy
+            foreach (var fecha in fechasValidas)
             {
-                DTPMostrarContenedores.Value = fechasValidas.Max();
+                LVListaFechaContenedoresDisponibles.Items.Add(fecha.ToString("dd/MM/yyyy"));
             }
         }
+
 
         private void btnBuscarCinta_Click(object sender, EventArgs e)
         {
@@ -69,7 +75,7 @@ namespace Gestor_de_Etiquetas
 
             foreach (var cinta in gestor.ObtenerCintasDeContenedor("Resguardo"))
             {
-                string aux = cinta.Id.ToString() +" "+ cinta.FechaExtraccion?.ToString("dd/MM/yyyy");
+                string aux = cinta.Id.ToString() + " " + cinta.FechaExtraccion?.ToString("dd/MM/yyyy");
                 //MessageBox.Show(aux);
                 LVListaCintasAlmacenLocal.Items.Add(aux);
             }
@@ -155,6 +161,24 @@ namespace Gestor_de_Etiquetas
                 : string.Empty;
         }
 
+        private void LVListaContenedoresDelDia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBContenedorCintasAMostrar.Text = LVListaContenedoresDelDia.SelectedItems.Count > 0
+                ? LVListaContenedoresDelDia.SelectedItems[0].Text
+                : string.Empty;
+        }
 
+        private void LVListaFechaContenedoresDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LVListaFechaContenedoresDisponibles.SelectedItems.Count > 0)
+            {
+                string fechaTexto = LVListaFechaContenedoresDisponibles.SelectedItems[0].Text;
+
+                if (DateTime.TryParseExact(fechaTexto, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
+                {
+                    DTPMostrarContenedores.Value = fecha;
+                }
+            }
+        }
     }
 }
