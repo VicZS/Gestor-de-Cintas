@@ -44,6 +44,7 @@
             CLBCintasEnUso = new CheckedListBox();
             btnResguardarCinta = new Button();
             btnCrearReporte = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -145,11 +146,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            label3.Location = new Point(88, 55);
+            label3.Location = new Point(129, 36);
             label3.Name = "label3";
-            label3.Size = new Size(379, 30);
+            label3.Size = new Size(307, 30);
             label3.TabIndex = 11;
-            label3.Text = "Escanea Aqui para Resguardar Cintas ";
+            label3.Text = "Escanea Aqui para Resguardar";
             // 
             // pictureBox2
             // 
@@ -157,7 +158,7 @@
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(8, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(82, 80);
+            pictureBox2.Size = new Size(97, 92);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 12;
             pictureBox2.TabStop = false;
@@ -207,12 +208,23 @@
             btnCrearReporte.UseVisualStyleBackColor = true;
             btnCrearReporte.Click += btnCrearReporte_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            label4.Location = new Point(129, 66);
+            label4.Name = "label4";
+            label4.Size = new Size(73, 30);
+            label4.TabIndex = 17;
+            label4.Text = "Cintas";
+            // 
             // InterfazAlmacenarCintas
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
+            Controls.Add(label4);
             Controls.Add(btnCrearReporte);
             Controls.Add(btnResguardarCinta);
             Controls.Add(CLBCintasEnUso);
@@ -254,5 +266,6 @@
         private CheckedListBox CLBCintasEnUso;
         private Button btnResguardarCinta;
         private Button btnCrearReporte;
+        private Label label4;
     }
 }
