@@ -50,6 +50,8 @@
             ClientSize = new Size(976, 678);
             Controls.Add(richTextBox1);
             FormBorderStyle = FormBorderStyle.None;
+            MaximumSize = new Size(976, 678);
+            MinimumSize = new Size(976, 678);
             Name = "InterfazAyuda";
             Text = "InterfazAyuda";
             ResumeLayout(false);
