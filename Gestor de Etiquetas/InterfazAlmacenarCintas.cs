@@ -350,5 +350,16 @@ namespace Gestor_de_Etiquetas
         {
 
         }
+
+        private void btnCrearReporte_Click(object sender, EventArgs e)
+        {
+            var result = gestor.ObtenerContenedoresPorFecha(DateTime.Now);
+
+            string nombreArchivo = "Reporte del dia " + DateTime.Now.ToString("yyyyMMdd");
+
+            gestor.ExportarContenedoresAExcel(result, nombreArchivo);
+
+            MessageBox.Show($"Reporte generado con éxito: {nombreArchivo}.xlsx");
+        }
     }
 }

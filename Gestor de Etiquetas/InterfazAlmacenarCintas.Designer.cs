@@ -43,6 +43,7 @@
             TBResguardarCinta = new TextBox();
             CLBCintasEnUso = new CheckedListBox();
             btnResguardarCinta = new Button();
+            btnCrearReporte = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -82,7 +83,7 @@
             // btnEliminarCita
             // 
             btnEliminarCita.Font = new Font("Segoe UI", 12.75F);
-            btnEliminarCita.Location = new Point(640, 610);
+            btnEliminarCita.Location = new Point(788, 599);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(165, 56);
             btnEliminarCita.TabIndex = 5;
@@ -195,12 +196,24 @@
             btnResguardarCinta.UseVisualStyleBackColor = true;
             btnResguardarCinta.Click += btnResguardarCinta_Click;
             // 
+            // btnCrearReporte
+            // 
+            btnCrearReporte.Font = new Font("Segoe UI", 12.75F);
+            btnCrearReporte.Location = new Point(492, 599);
+            btnCrearReporte.Name = "btnCrearReporte";
+            btnCrearReporte.Size = new Size(165, 56);
+            btnCrearReporte.TabIndex = 16;
+            btnCrearReporte.Text = "Crear Reporte";
+            btnCrearReporte.UseVisualStyleBackColor = true;
+            btnCrearReporte.Click += btnCrearReporte_Click;
+            // 
             // InterfazAlmacenarCintas
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
+            Controls.Add(btnCrearReporte);
             Controls.Add(btnResguardarCinta);
             Controls.Add(CLBCintasEnUso);
             Controls.Add(TBResguardarCinta);
@@ -240,5 +253,6 @@
         private TextBox TBResguardarCinta;
         private CheckedListBox CLBCintasEnUso;
         private Button btnResguardarCinta;
+        private Button btnCrearReporte;
     }
 }
