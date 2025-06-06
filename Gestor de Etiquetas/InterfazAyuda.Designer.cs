@@ -44,7 +44,8 @@
             // 
             // InterfazAyuda
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleDimensions = new SizeF(9F, 23F);
+            AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
             Controls.Add(richTextBox1);
