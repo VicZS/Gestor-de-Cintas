@@ -209,8 +209,7 @@
             // 
             // InterfazAlmacenarCintas
             // 
-            AutoScaleDimensions = new SizeF(10F, 23F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(216, 223, 231);
             ClientSize = new Size(976, 678);
             Controls.Add(btnCrearReporte);
